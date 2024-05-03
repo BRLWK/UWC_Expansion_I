@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Disrupt gas -->
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Fleck_DisruptGasSource</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.6</fadeInTime>
+    <solidTime>0.4</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <growthRate>0.8</growthRate>
+    <acceleration>(0, 0.9, 3)</acceleration>
+    <rotateTowardsMoveDirection>true</rotateTowardsMoveDirection>
+    <graphicData>
+      <texPath>Things/Gas/GasCloudThickA</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(106, 50, 159, 50)</color>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Fleck_DisruptGasSpread</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.5</fadeInTime>
+    <solidTime>1</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <growthRate>0.4</growthRate>
+    <collide>true</collide>
+    <speedPerTime>-1</speedPerTime>
+    <graphicData>
+      <texPath>Things/Gas/GasCloudThickA</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(73, 36, 108, 64)</color>
+    </graphicData>
+  </FleckDef>
+
+  <!-- disrupt radius -->
+
+  <FleckDef ParentName="FleckBase">
+    <defName>Disrupt_Radius_Fleck</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>2.5</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>2.5</fadeOutTime>
+    <growthRate>0.005</growthRate>
+    <graphicData>
+      <texPath>UWCEI_Motes/Disrupt_Radius</texPath>
+      <drawSize>(1,1)</drawSize>
+      <color>(230, 145, 56, 80)</color> <!-- Orange -->
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+
+  <!-- MGP radius -->
+
+  <FleckDef ParentName="FleckBase">
+    <defName>MGP_Radius_Fleck</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>2.5</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>2.5</fadeOutTime>
+    <growthRate>0.005</growthRate>
+    <graphicData>
+      <texPath>UWCEI_Motes/Misc_Radius100</texPath>
+      <drawSize>(1,1)</drawSize>
+      <color>(230, 145, 56, 50)</color> <!-- Orange -->
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+
+  <!-- Blast dummy -->
+
+  <FleckDef ParentName="FleckBase">
+    <defName>UWCEI_BlastDummy</defName>
+    <graphicData>
+      <texPath>UWCEI_Dummy</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0</solidTime>
+    <fadeOutTime>0.1</fadeOutTime>
+  </FleckDef>
+
+</Defs>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+    <v1.4>
+        <li>/</li>
+        <li>1.5</li>
+        <li IfModNotActive="CETeam.CombatExtended">Vanilla</li>
+        <li IfModActive="CETeam.CombatExtended">CE</li>
+    </v1.4>
+    <v1.5>
+        <li>/</li>
+        <li>1.5</li>
+        <li IfModNotActive="CETeam.CombatExtended">Vanilla</li>
+        <li IfModActive="CETeam.CombatExtended">CE</li>
+        <li IfModActive="Ludeon.Rimworld.Anomaly">Anomaly</li>
+    </v1.5>
+</loadFolders>

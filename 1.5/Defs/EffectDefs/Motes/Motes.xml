@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+<!-- Aiming laser -->
+
+  <ThingDef Name="AimLaserMoteBase" ParentName="MoteBase" Abstract="True">
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="AimLaserMoteBase">
+    <defName>Mote_AGL_Aim_Red</defName>
+    <graphicData>
+      <texPath>UWCEI_Motes/AGL_Base_Laser</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(255, 17, 0, 60)</color>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="AimLaserMoteBase">
+    <defName>Mote_AGL_Aim_Orange</defName>
+    <graphicData>
+      <texPath>UWCEI_Motes/AGL_Base_Laser</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(230, 145, 56, 80)</color>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef Name="AimDotMoteBase" ParentName="MoteBase" Abstract="True">
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="AimDotMoteBase">
+    <defName>Mote_AGL_Dot_Red</defName> 
+    <graphicData>
+      <texPath>UWCEI_Motes/AGL_Base_Dot</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteHellfireCannon_Charge</shaderType>
+      <color>(255, 17, 0, 60)</color>
+      <shaderParameters>
+        <_RandomTex>/Things/Mote/RandomFlicker</_RandomTex>
+        <_FlickerFrequency>0.25</_FlickerFrequency>
+        <_FlickerAmount>0.6</_FlickerAmount>
+        <_InnerCircleIntensity>0.005</_InnerCircleIntensity>
+        <_InnerCircleSize>0.2</_InnerCircleSize>
+        <_InnerCircleShimmerAmount>0.07</_InnerCircleShimmerAmount>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="AimDotMoteBase">
+    <defName>Mote_AGL_Dot_Orange</defName> 
+    <graphicData>
+      <texPath>UWCEI_Motes/AGL_Base_Dot</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteHellfireCannon_Charge</shaderType>
+      <color>(230, 145, 56, 80)</color>
+      <shaderParameters>
+        <_RandomTex>/Things/Mote/RandomFlicker</_RandomTex>
+        <_FlickerFrequency>0.25</_FlickerFrequency>
+        <_FlickerAmount>0.6</_FlickerAmount>
+        <_InnerCircleIntensity>0.005</_InnerCircleIntensity>
+        <_InnerCircleSize>0.2</_InnerCircleSize>
+        <_InnerCircleShimmerAmount>0.07</_InnerCircleShimmerAmount>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Entrench</defName>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <mote>
+      <fadeInTime>0.25</fadeInTime>
+      <solidTime>13</solidTime>
+      <fadeOutTime>0.25</fadeOutTime>
+    </mote>
+    <graphicData>
+      <texPath>UWCEI_Motes/Entrench</texPath>
+    </graphicData>
+  </ThingDef>
+
+  <!-- Thermal target -->
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ThermalTargetWarmup</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.25</fadeInTime>
+      <fadeOutTime>0.25</fadeOutTime>
+      <solidTime>2.5</solidTime>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>MoteGlowDistorted</shaderType>
+      <texPath>UWCEI_Motes/Target</texPath>
+      <shaderParameters>
+        <_DistortionTex>/Things/Mote/SoftNoise</_DistortionTex>
+        <_distortionIntensity>0.025</_distortionIntensity>
+        <_DistortionScale>0.025</_DistortionScale>
+        <_distortionScrollSpeed>(0.325, 0.325, 0.0)</_distortionScrollSpeed>
+      </shaderParameters>
+      <drawSize>19</drawSize>
+      <color>(102, 205, 58, 25)</color>
+    </graphicData>
+  </ThingDef>
+
+  <!-- ThermalTarget Radius-->
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ThermalTargetRadius</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <fadeOutTime>0.25</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>UWCEI_Motes/Misc_Radius100</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(102, 205, 58, 80)</color>
+      <drawSize>19</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <!-- Spotting Aura Radius-->
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SpotAuraRadius</defName>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <fadeOutTime>0.25</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>UWCEI_Motes/Spot_Aura_Radius</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(230, 145, 56, 80)</color>
+      <drawSize>19</drawSize>
+    </graphicData>
+  </ThingDef>
+
+</Defs>

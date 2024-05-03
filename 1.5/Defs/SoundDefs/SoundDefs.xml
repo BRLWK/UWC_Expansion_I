@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- =======================Fire======================= -->
+
+<!-- Audio credit to johanwesting @ Freesound.org; "377786__johanwestling__gun_22mm_75mm_9mm_close_single_shots_m10.wav" -->
+
+   <SoundDef>
+    <defName>Fire_K10_Pistol</defName>  
+    <context>MapOnly</context> 
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>k10</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>8.8</min>        
+          <max>10.2</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>0.9</min>        
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+<!-- =======================Interact======================= -->
+
+<!-- Audio credit to serotonin @ Freesound.org; "674744__sertonin__browning-hi-power-handgun-being-cocked-5x.wav" -->
+
+   <SoundDef>
+    <defName>Interact_K10_Pistol</defName>  
+    <context>MapOnly</context> 
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>InteractK10</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>11.8</min>        
+          <max>12.2</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>0.99</min>        
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- Audio credit to asieierka, micropolis, sieuamthanh, & mrauralization @ Freesound.org; "floppy access, disc reading, and macintosh startup" -->
+
+   <SoundDef>
+    <defName>Interact_AGL3</defName>  
+    <context>MapOnly</context> 
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>InteractAGL</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>18</min>        
+          <max>18</max>
+        </volumeRange>      
+        <pitchRange>0.90~0.91</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>Reload_Single_AGL3</defName>  
+    <context>MapOnly</context> 
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>ReloadAGL</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>18</min>        
+          <max>18</max>
+        </volumeRange>      
+        <pitchRange>0.90~0.91</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>Ready_Fire_AGL3</defName>  
+    <context>MapOnly</context> 
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>SmartAimShort</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>18</min>        
+          <max>18</max>
+        </volumeRange>      
+        <pitchRange>0.90~0.91</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>CompCom_Working</defName>  
+    <sustain>True</sustain>  
+    <context>MapOnly</context>
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <subSounds>
+      <li>
+        <muteWhenPaused>True</muteWhenPaused>      
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SustainerCompAGL</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>15</volumeRange>
+        <pitchRange>0.90~0.91</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <!-- grenade is thinking -->
+  <SoundDef>
+    <defName>CompCom_Reload_Loading_Ready</defName>  
+    <sustain>True</sustain>  
+    <context>MapOnly</context>
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <sustainStartSound>Reload_Single_AGL3</sustainStartSound>  
+    <sustainStopSound>Ready_Fire_AGL3</sustainStopSound>  
+    <subSounds>
+      <li>
+        <muteWhenPaused>True</muteWhenPaused>      
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SustainerCompAGL</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>18~18</volumeRange>      
+        <pitchRange>0.90~0.91</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>UWCEI_Explosion_Dummy</defName>  
+    <context>MapOnly</context> 
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>SmartAimShort</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>0</min>        
+          <max>0</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- HVT-->
+
+    <SoundDef>
+      <defName>Shot_CBR_Heavy</defName>  
+      <eventNames/>  
+      <context>MapOnly</context>
+      <maxSimultaneous>1</maxSimultaneous>  
+      <subSounds>
+        <li>
+          <grains>
+            <li Class="AudioGrain_Clip">
+              <clipPath>Caseless/Shot_cbatrifle</clipPath>
+            </li>
+          </grains>      
+          <volumeRange>
+            <min>40</min>        
+            <max>40</max>
+          </volumeRange>      
+          <pitchRange>
+            <min>1.071765</min>        
+            <max>1.075765</max>
+          </pitchRange>
+          <filters>
+            <li Class="SoundFilterEcho">
+              <delay>1112.654</delay>          
+              <decayRatio>0.5433328</decayRatio>          
+              <wetMix>0.1333435</wetMix>          
+              <dryMix>1</dryMix>
+            </li>
+          </filters> 
+        </li>
+      </subSounds>
+    </SoundDef>
+
+</Defs>

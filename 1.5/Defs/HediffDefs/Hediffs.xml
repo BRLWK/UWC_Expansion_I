@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Gunlink -->
+
+    <HediffDef ParentName="UWC_Ability_Buff_TI">
+        <defName>UWC_Gunlink</defName>
+        <label>gunlink</label>
+        <description>The caster can fire their weapon quicker and experiences increased movement speed for a short time.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <stages>
+            <li>
+                <statOffsets>
+                    <ShootingAccuracyPawn>4</ShootingAccuracyPawn>
+                    <AimingDelayFactor>-0.35</AimingDelayFactor>
+                    <StaggerDurationFactor>-0.5</StaggerDurationFactor>
+                </statOffsets>
+                <statFactors>
+                  <MoveSpeed>1.2</MoveSpeed>
+                </statFactors>
+            </li>
+        </stages>
+        <comps>
+            <li Class="HediffCompProperties_Disappears">
+                <showRemainingTime>True</showRemainingTime>
+            </li>
+            <li Class="HediffCompProperties_DisappearsOnDeath"/>
+        </comps>
+        <isBad>false</isBad>
+    </HediffDef>
+
+  <!-- Base of Fire -->
+
+    <HediffDef ParentName="UWC_Ability_Buff_TI">
+      <defName>UWC_BoFHediff</defName>
+      <label>base of fire</label>
+      <description>The LMG gunner encourages nearby friendlies provide covering fire.</description>
+      <hediffClass>HediffWithComps</hediffClass>
+      <comps>
+        <li Class="HediffCompProperties_Disappears">
+          <showRemainingTime>True</showRemainingTime>
+        </li>
+        <li Class="HediffCompProperties_DisappearsOnDeath"/>
+        <li Class="HediffCompProperties_GiveHediffsInRange">
+          <range>9.9</range>
+          <mote>Mote_CombatCommand</mote>
+          <hideMoteWhenNotDrafted>true</hideMoteWhenNotDrafted>
+          <targetingParameters>
+            <canTargetBuildings>false</canTargetBuildings>
+            <canTargetAnimals>false</canTargetAnimals>
+            <canTargetMechs>false</canTargetMechs>
+            <onlyTargetColonists>true</onlyTargetColonists>
+          </targetingParameters>
+          <hediff>UWC_BoFHediffBuff</hediff>
+        </li>
+      </comps>
+      <isBad>false</isBad>
+      <stages>
+        <li>
+          <statOffsets>
+            <ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
+            <RangedCooldownFactor>-0.3</RangedCooldownFactor>
+            <AimingDelayFactor>-0.3</AimingDelayFactor>
+          </statOffsets>
+        </li>
+      </stages>
+    </HediffDef>
+
+    <HediffDef ParentName="UWC_Ability_Buff_TI">
+      <defName>UWC_BoFHediffBuff</defName>
+      <label>base of fire</label>
+      <description>Nearby friendlies are bolstered by the report of 8mm caseless and rain of synthread belt-link.</description>
+      <debugLabelExtra>other</debugLabelExtra>
+      <hediffClass>HediffWithComps</hediffClass>
+      <comps>
+        <li Class="HediffCompProperties_Disappears">
+          <showRemainingTime>false</showRemainingTime>
+        </li>
+        <li Class="HediffCompProperties_DisappearsOnDeath"/>
+        <li Class="HediffCompProperties_Link">
+          <requireLinkOnOtherPawn>false</requireLinkOnOtherPawn>
+          <maxDistance>10</maxDistance>
+          <customMote>Mote_CombatCommandLinkLine</customMote>
+        </li>
+      </comps>
+      <isBad>false</isBad>
+      <stages>
+        <li>
+          <statOffsets>
+            <ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
+            <RangedCooldownFactor>-0.3</RangedCooldownFactor>
+            <AimingDelayFactor>-0.3</AimingDelayFactor>
+          </statOffsets>
+        </li>
+      </stages>
+    </HediffDef>
+
+  <!-- Assistant Gunner -->
+
+    <HediffDef ParentName="UWC_Ability_Buff_TI">
+      <defName>UWC_AG_Hediff</defName>
+      <label>assistant gunner</label>
+      <description>The assistant gunner puts aside their weapons to help the LMG.</description>
+      <hediffClass>HediffWithComps</hediffClass>
+      <comps>
+        <li Class="HediffCompProperties_Disappears">
+          <disappearsAfterTicks>2600</disappearsAfterTicks> <!-- 45ish seconds -->
+          <showRemainingTime>True</showRemainingTime>
+        </li>
+        <li Class="HediffCompProperties_DisappearsOnDeath"/>
+        <li Class="HediffCompProperties_GiveHediffsInRange">
+          <range>1.9</range>
+          <!--mote>Mote_CombatCommand</mote-->
+          <hideMoteWhenNotDrafted>true</hideMoteWhenNotDrafted>
+          <targetingParameters>
+            <canTargetBuildings>false</canTargetBuildings>
+            <canTargetAnimals>false</canTargetAnimals>
+            <canTargetMechs>false</canTargetMechs>
+            <onlyTargetColonists>true</onlyTargetColonists>
+          </targetingParameters>
+          <hediff>UWC_AG_Buff</hediff>
+        </li>
+      </comps>
+      <isBad>false</isBad>
+      <stages>
+        <li>
+          <statOffsets>
+            <RangedCooldownFactor>4</RangedCooldownFactor>
+            <AimingDelayFactor>4</AimingDelayFactor>
+            <MoveSpeed>-4</MoveSpeed>
+          </statOffsets>
+          <!--statFactors>
+          </statFactors-->
+        </li>
+      </stages>
+    </HediffDef>
+
+    <HediffDef ParentName="UWC_Ability_Buff_TI">
+      <defName>UWC_AG_Buff</defName>
+      <label>assistant gunner</label>
+      <description>The LMG gunner can now fire much quicker, but becomes nearly immobile.</description>
+      <debugLabelExtra>other</debugLabelExtra>
+      <hediffClass>HediffWithComps</hediffClass>
+      <comps>
+        <li Class="HediffCompProperties_Disappears">
+          <disappearsAfterTicks>2600</disappearsAfterTicks> <!-- 45ish seconds -->
+          <showRemainingTime>false</showRemainingTime>
+        </li>
+        <li Class="HediffCompProperties_DisappearsOnDeath"/>
+        <li Class="HediffCompProperties_Link">
+          <requireLinkOnOtherPawn>false</requireLinkOnOtherPawn>
+          <maxDistance>1.9</maxDistance>
+          <customMote>Mote_CombatCommandLinkLine</customMote>
+        </li>
+      </comps>
+      <isBad>false</isBad>
+      <stages>
+        <li>
+          <statOffsets>
+            <ShootingAccuracyPawn>-3</ShootingAccuracyPawn>
+            <RangedCooldownFactor>-0.35</RangedCooldownFactor>
+            <AimingDelayFactor>-0.35</AimingDelayFactor>
+            <MoveSpeed>-4</MoveSpeed>
+          </statOffsets>
+          <!--statFactors>
+          </statFactors-->
+        </li>
+      </stages>
+    </HediffDef>
+
+</Defs>

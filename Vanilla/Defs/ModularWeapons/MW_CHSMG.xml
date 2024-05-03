@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BaseBullet" MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>Bullet_CHSMG</defName>
+    <label>SMG bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <stoppingPower>0.7</stoppingPower>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- Weapon -->
+
+  <ThingDef ParentName="BaseCaselessModularWeapon" MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>UWCEI_Modular_Caseless_SMG</defName>
+    <label>caseless H-SMG</label>
+    <description>Super-compact and lightweight slug thrower. Suffers from higher than average recoil due to it's short barrel and polyplas construction.</description>
+    <graphicData>
+    	<texPath>Novo</texPath>
+    	<graphicClass>ModularWeapons.Graphic_Modular</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Autopistol</soundInteract>
+    <recipeMaker>
+      <researchPrerequisite>BlowbackOperation</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <weaponTags>
+        <li>IndustrialGunAdvanced</li>
+        <li>ShortShots</li>
+        <li>AssaultRifle</li>
+        <li>UWC_SMG</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>ShortShots</li>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+    <statBases>
+      <WorkToMake>21000</WorkToMake>
+      <Mass>2.15</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.40</AccuracyShort>
+      <AccuracyMedium>0.15</AccuracyMedium>
+      <AccuracyLong>0.05</AccuracyLong>
+      <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+    </statBases>
+    <comps>
+        <li Class="ModularWeapons.CompProperties_ModularParts">
+        	<compClass>ModularWeapons.CompModularParts</compClass>
+        	<partKinds>
+        		<li>CHSMG_Mag</li>
+        		<li>CHSMG_Frame</li>
+        		<li>CHSMG_Stock</li>
+        		<li>CHSMG_Fore</li>
+        		<li>CHSMG_Muzzle</li>
+        		<li>CHSMG_Optic</li>
+        	</partKinds>
+        	<majorKinds>
+        		<li>CHSMG_Mag</li>
+        		<li>CHSMG_Frame</li>
+        	</majorKinds>
+        	<defaultParts>
+             <li>CHSMG_Mag_Standard</li>
+             <li>CHSMG_Frame_Standard</li>
+             <li>CHSMG_Stock_Folded</li>
+            </defaultParts>
+        </li>
+    </comps>
+    <costList>
+      <Steel>25</Steel>
+      <Chemfuel>5</Chemfuel>
+      <Plasteel>5</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_CHSMG</defaultProjectile> <!-- Bullet_CHSMG -->
+        <warmupTime>0.7</warmupTime>
+        <range>14.9</range>
+        <burstShotCount>4</burstShotCount> <!-- 4 -->
+        <soundCast>Fire_K10_Pistol</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <ticksBetweenBurstShots>9</ticksBetweenBurstShots> <!-- 9 -->
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>grip</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- =================================== Parts -->
+
+  <!-- ================ Magazine -->
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Mag_Standard</defName>
+    <label>Standard magazine</label>
+    <description>Standard magazine.</description>
+    <kind>CHSMG_Mag</kind>
+    <path>Mag_Std</path>
+    <!--=====-->
+    <!--=====-->
+    <costList>
+      <Chemfuel>8</Chemfuel>
+      <Steel>8</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Mag_Ext</defName>
+    <label>Extended magazine</label>
+    <description>Adds an additional shot per burst.</description>
+    <kind>CHSMG_Mag</kind>
+    <path>Mag_Ext</path>
+    <!--=====-->
+    <massFactor>0.04</massFactor>
+    <burstCountFactor>1</burstCountFactor>
+    <AccTouchFactor>-0.03</AccTouchFactor>
+    <AccShortFactor>-0.05</AccShortFactor>
+    <AccMediumFactor>-0.07</AccMediumFactor>
+    <cooldownFactor>0.1</cooldownFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>12</Chemfuel>
+      <Steel>12</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Mag_Drum</defName>
+    <label>Drum magazine</label>
+    <description>Adds 2 additional shots per burst.</description>
+    <kind>CHSMG_Mag</kind>
+    <path>Mag_Drum</path>
+    <!--=====-->
+    <massFactor>0.09</massFactor>
+    <burstCountFactor>2</burstCountFactor>
+    <AccTouchFactor>-0.05</AccTouchFactor>
+    <AccShortFactor>-0.08</AccShortFactor>
+    <AccMediumFactor>-0.12</AccMediumFactor>
+    <cooldownFactor>0.2</cooldownFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>18</Chemfuel>
+      <Steel>15</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <!-- ================ Frame -->
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Frame_Standard</defName>
+    <label>Standard frame</label>
+    <description>Lighweight polyplas frame with open bolt and recoil reduction mechanism.</description>
+    <kind>CHSMG_Frame</kind>
+    <path>Reciever_Std</path>
+    <!--=====-->
+    <!--=====-->
+    <costList>
+      <Chemfuel>10</Chemfuel>
+      <Plasteel>5</Plasteel>
+      <Steel>5</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Frame_Light</defName>
+    <label>Lightweight frame</label>
+    <description>Lighweight polyplas frame firing machine pistol cartridges.</description>
+    <kind>CHSMG_Frame</kind>
+    <path>Reciever_9</path>
+    <!--=====-->
+    <massFactor>-0.2</massFactor>
+    <projectileFactor>Bullet_MachinePistol</projectileFactor>
+    <ticksBetweenShotsFactor>-3</ticksBetweenShotsFactor>
+    <rangeFactor>-4</rangeFactor>
+    <burstCountFactor>2</burstCountFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>10</Chemfuel>
+      <Plasteel>5</Plasteel>
+      <Steel>5</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <researchPrerequisites>
+      <li>GasOperation</li>
+    </researchPrerequisites>
+  </ModularWeapons.ModularPartDef>
+
+  <!-- ================ Stock -->
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Stock_Folded</defName>
+    <label>Folded stock</label>
+    <description>Stock retracted.</description>
+    <kind>CHSMG_Stock</kind>
+    <path>Stock_Fold</path>
+    <!--=====-->
+    <massFactor>0.32</massFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>3</Chemfuel>
+      <Steel>5</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Stock_Ext</defName>
+    <label>Extended stock</label>
+    <description>Stock extended for steadier shooting.</description>
+    <kind>CHSMG_Stock</kind>
+    <path>Stock_Ext</path>
+    <!--=====-->
+    <rangeFactor>4</rangeFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>3</Chemfuel>
+      <Steel>5</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Stock_Full</defName>
+    <label>Full stock</label>
+    <description>Full poylmer stock.</description>
+    <kind>CHSMG_Stock</kind>
+    <path>Stock_Full</path>
+    <!--=====-->
+    <massFactor>0.68</massFactor>
+    <rangeFactor>7</rangeFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>6</Chemfuel>
+      <Steel>10</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <!-- ================ Fore -->
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Fore_Loop</defName>
+    <label>Fiber loop</label>
+    <description>Fiber loop foregrip increases accuracy.</description>
+    <kind>CHSMG_Fore</kind>
+    <path>Fore_Loop</path>
+    <!--=====-->
+    <massFactor>0.009</massFactor>
+    <AccTouchFactor>0.01</AccTouchFactor>
+    <AccShortFactor>0.01</AccShortFactor>
+    <cooldownFactor>-0.1</cooldownFactor>
+    <!--=====-->
+    <costList>
+      <Synthread>10</Synthread>
+      <Steel>5</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Fore_Grip</defName>
+    <label>Foregrip</label>
+    <description>Polyplas foregrip; sturdy, light and helps with recoil control.</description>
+    <kind>CHSMG_Fore</kind>
+    <path>Fore_Grip</path>
+    <!--=====-->
+    <massFactor>0.012</massFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.01</AccShortFactor>
+    <AccMediumFactor>0.01</AccMediumFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>10</Chemfuel>
+      <Plasteel>8</Plasteel>
+      <Steel>5</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Fore_Flashlight</defName>
+    <label>Flashlight</label>
+    <description>Fore-mounted flashlight.</description>
+    <kind>CHSMG_Fore</kind>
+    <path>Fore_Flash</path>
+    <!--=====-->
+    <massFactor>0.07</massFactor>
+    <flashlightFactor>true</flashlightFactor>
+    <HuntingStealthFactor>-0.3</HuntingStealthFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>5</Chemfuel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+      <Steel>10</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Fore_Laser</defName>
+    <label>Laser sight</label>
+    <description>Increases accuracy.</description>
+    <kind>CHSMG_Fore</kind>
+    <path>Fore_Laser</path>
+    <!--=====-->
+	<massFactor>0.05</massFactor>
+	<cooldownFactor>-0.05</cooldownFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.02</AccShortFactor>
+    <AccMediumFactor>0.01</AccMediumFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>5</Chemfuel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+      <Steel>10</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Fore_Lightbox</defName>
+    <label>Tactical lightbox</label>
+    <description>Tactical lightbox, increases accuracy and illuminates targets.</description>
+    <kind>CHSMG_Fore</kind>
+    <path>Fore_Light</path>
+    <!--=====-->
+	<massFactor>0.1</massFactor>
+	<cooldownFactor>-0.05</cooldownFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.02</AccShortFactor>
+    <AccMediumFactor>0.01</AccMediumFactor>
+    <flashlightFactor>true</flashlightFactor>
+    <HuntingStealthFactor>-0.3</HuntingStealthFactor>
+    <!--=====-->
+    <costList>
+      <Chemfuel>15</Chemfuel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+      <Steel>15</Steel>
+    </costList>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+  </ModularWeapons.ModularPartDef>
+
+  <!-- ================ Muzzle -->
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Muzzle_Compensator</defName>
+    <label>Compensator</label>
+    <description>Muzzle device that reduces recoil.</description>
+    <kind>CHSMG_Muzzle</kind>
+    <path>Muzzle_Comp</path>
+    <!--=====-->
+    <massFactor>0.11</massFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.01</AccShortFactor>
+    <cooldownFactor>-0.1</cooldownFactor>
+    <rangeFactor>-2</rangeFactor>
+    <!--=====-->
+    <costList>
+      <Plasteel>5</Plasteel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Muzzle_SuppressorL</defName>
+    <label>Light suppressor</label>
+    <description>Suppressor reducing weapon report.</description>
+    <kind>CHSMG_Muzzle</kind>
+    <path>Muzzle_SupS</path>
+    <!--=====-->
+    <IncomingDamageFactor>-0.08</IncomingDamageFactor>
+	<massFactor>0.09</massFactor>
+    <HuntingStealthFactor>0.45</HuntingStealthFactor>
+    <!--=====-->
+    <costList>
+      <Steel>15</Steel>
+      <Chemfuel>15</Chemfuel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Muzzle_SuppressorH</defName>
+    <label>Heavy suppressor</label>
+    <description>Large muzzle suppressor reducing weapon report and recoil. Used as a foregrip.</description>
+    <kind>CHSMG_Muzzle</kind>
+    <path>Muzzle_SupB</path>
+    <!--=====-->
+    <IncomingDamageFactor>-0.14</IncomingDamageFactor>
+    <massFactor>0.54</massFactor>
+    <HuntingStealthFactor>0.8</HuntingStealthFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.01</AccShortFactor>
+    <AccMediumFactor>0.01</AccMediumFactor>
+    <!--=====-->
+    <costList>
+      <Plasteel>15</Plasteel>
+      <Chemfuel>20</Chemfuel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Muzzle_Enforcer</defName>
+    <label>Enforcer barrel</label>
+    <description>Large muzzle device used by enforcer police for longer-range gunfighting and nonlethal pacification.</description>
+    <kind>CHSMG_Muzzle</kind>
+    <path>Muzzle_Force</path>
+    <!--=====-->
+    <massFactor>0.95</massFactor>
+    <flashlightFactor>true</flashlightFactor>
+    <cooldownFactor>0.01</cooldownFactor>
+    <warmupTimeFactor>0.1</warmupTimeFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.02</AccShortFactor>
+    <AccMediumFactor>0.02</AccMediumFactor>
+    <AccLongFactor>0.02</AccLongFactor>
+    <toolFactor>
+      <label>Stun tool</label>
+      <capacities>
+        <li>Blunt</li>
+      </capacities>
+      <power>9</power>
+      <cooldownTime>2</cooldownTime>
+      <extraMeleeDamages>
+          <li>
+            <def>Stun</def>
+            <amount>8</amount>
+            <chance>0.5</chance>
+          </li>
+        </extraMeleeDamages>
+    </toolFactor>
+    <!--=====-->
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+    <costList>
+      <Steel>20</Steel>
+      <Chemfuel>30</Chemfuel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+    <incompatibleKind>
+      <li>CHSMG_Fore</li>
+    </incompatibleKind>
+  </ModularWeapons.ModularPartDef>
+
+  <!-- ================ Optics -->
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Optic_RedDot</defName>
+    <label>Red-dot sight</label>
+    <description>CQB sight that allows for quick aiming.</description>
+    <kind>CHSMG_Optic</kind>
+    <path>Optic_RedDot</path>
+    <!--=====-->
+    <massFactor>0.2</massFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.01</AccShortFactor>
+    <warmupTimeFactor>-0.1</warmupTimeFactor>
+    <!--=====-->
+    <costList>
+      <Steel>5</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Optic_Holo</defName>
+    <label>Holographic sight</label>
+    <description>2x holographic sight.</description>
+    <kind>CHSMG_Optic</kind>
+    <path>Optic_Holo</path>
+    <!--=====-->
+    <massFactor>0.35</massFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.02</AccShortFactor>
+    <AccMediumFactor>0.02</AccMediumFactor>
+    <!--=====-->
+    <costList>
+      <Plasteel>5</Plasteel>
+      <Chemfuel>10</Chemfuel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Optic_ACOG</defName>
+    <label>ACOG scope</label>
+    <description>Lightweight ACOG scope.</description>
+    <kind>CHSMG_Optic</kind>
+    <path>Optic_ACOG</path>
+    <!--=====-->
+    <massFactor>0.35</massFactor>
+    <AccTouchFactor>0.01</AccTouchFactor>
+    <AccShortFactor>0.02</AccShortFactor>
+    <AccMediumFactor>0.02</AccMediumFactor>
+    <AccLongFactor>0.03</AccLongFactor>
+    <warmupTimeFactor>0.1</warmupTimeFactor>
+    <!--=====-->
+    <costList>
+      <Plasteel>10</Plasteel>
+      <Chemfuel>5</Chemfuel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Optic_Scope</defName>
+    <label>Scope</label>
+    <description>For escaping prison-cities.</description>
+    <kind>CHSMG_Optic</kind>
+    <path>Optic_Scope</path>
+    <!--=====-->
+    <massFactor>0.35</massFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.03</AccShortFactor>
+    <AccMediumFactor>0.03</AccMediumFactor>
+    <AccLongFactor>0.05</AccLongFactor>
+    <warmupTimeFactor>0.2</warmupTimeFactor>
+    <!--=====-->
+    <costList>
+      <Plasteel>10</Plasteel>
+      <Steel>10</Steel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+      <Uranium>1</Uranium>
+    </costList>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Optic_SmartDot</defName>
+    <label>Smartdot</label>
+    <description>Special optic with aim assistance.</description>
+    <kind>CHSMG_Optic</kind>
+    <path>Optic_SmartDot</path>
+    <!--=====-->
+    <massFactor>0.8</massFactor>
+    <AccTouchFactor>0.02</AccTouchFactor>
+    <AccShortFactor>0.2</AccShortFactor>
+    <AccMediumFactor>0.02</AccMediumFactor>
+    <warmupTimeFactor>-0.1</warmupTimeFactor>
+    <!--=====-->
+    <costList>
+      <Plasteel>10</Plasteel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+    <researchPrerequisites>
+      <li>Fabrication</li>
+    </researchPrerequisites>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>CHSMG_Optic_SmartHolo</defName>
+    <label>Smartholo</label>
+    <description>Special optic with aim assistance.</description>
+    <kind>CHSMG_Optic</kind>
+    <path>Optic_SmartHolo</path>
+    <!--=====-->
+    <massFactor>0.17</massFactor>
+    <AccTouchFactor>0.04</AccTouchFactor>
+    <AccShortFactor>0.03</AccShortFactor>
+    <AccMediumFactor>0.03</AccMediumFactor>
+    <!--=====-->
+    <costList>
+      <Plasteel>15</Plasteel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <researchPrerequisites>
+      <li>Fabrication</li>
+    </researchPrerequisites>
+  </ModularWeapons.ModularPartDef>
+
+</Defs>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- tier 1 -->
+
+  <HediffDef Abstract="True" Name="UWC_Ability_Buff_TI">
+    <defaultLabelColor>(0.5, 1, 0.3, 0.5)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- Grenadier deck -->
+  <!-- ==========  Thermal spotter =========-->
+  
+  <HediffDef ParentName="UWC_Ability_Buff_TI">
+    <defName>Hdf_Base_ThermalSpotter_T1</defName>
+    <label>thermal spotter (T1)</label>
+    <description>The grenadier's thermal optics can detect enemies using camouflage and cover with relative ease.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>True</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+      <li Class="HediffCompProperties_GiveHediffsInRange">
+        <range>9.9</range>
+        <mote>Mote_ThermalTargetRadius</mote>
+        <hideMoteWhenNotDrafted>true</hideMoteWhenNotDrafted>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetColonists>true</onlyTargetColonists>
+        </targetingParameters>
+        <hediff>Hdf_ThermalSpotter_T1</hediff>
+      </li>
+    </comps>
+    <isBad>false</isBad>
+  </HediffDef>
+
+  <HediffDef ParentName="UWC_Ability_Buff_TI">
+    <defName>Hdf_ThermalSpotter_T1</defName>
+    <label>thermal spotter (T1)</label>
+    <description>Nearby friendlies are coordinating with the grenadier to spot and engage targets.</description>
+    <debugLabelExtra>other</debugLabelExtra>
+    <hediffClass>HediffWithComps</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+    </comps>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statOffsets>
+          <AimingDelayFactor>-0.14</AimingDelayFactor>
+          <ShootingAccuracyPawn>1.5</ShootingAccuracyPawn>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==== Disrupt grenade ==== -->
+
+  <HediffDef ParentName="UWC_Ability_Buff_TI">
+    <defName>SAGL3_Hdf_Disrupt</defName>
+    <label>Disrupt grenade</label>
+    <description>Flare and smoke disrupts anyone or anything caught in the target area.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300</disappearsAfterTicks> <!-- 30secs -->
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_Effecter">
+        <stateEffecter>UnderEffect</stateEffecter>
+        <severityIndices>
+          <min>0</min>
+          <max>1</max>
+        </severityIndices>
+      </li>
+    </comps>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <StaggerDurationFactor>1</StaggerDurationFactor>
+          <AimingDelayFactor>0.2</AimingDelayFactor>
+        </statFactors>
+        <statOffsets>
+          <MentalBreakThreshold>0.1</MentalBreakThreshold>
+          <CertaintyLossFactor MayRequire="Ludeon.RimWorld.Ideology">1.25</CertaintyLossFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ========== spotting aura =========-->
+  
+  <HediffDef ParentName="UWC_Ability_Buff_TI">
+    <defName>SAGL3_Hdf_SpotDriver</defName>
+    <label>spotted aura (T1)</label>
+    <description>Target hosts a debuffing aura.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1800</disappearsAfterTicks>
+        <showRemainingTime>True</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+      <li Class="HediffCompProperties_GiveHediffsInRange">
+        <range>10</range>
+        <mote>Mote_SpotAuraRadius</mote>
+        <hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+        <targetingParameters>
+          <canTargetLocations>false</canTargetLocations>
+          <canTargetPawns>true</canTargetPawns>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetHumans>true</canTargetHumans>
+          <canTargetMechs>true</canTargetMechs>
+          <canTargetSelf>false</canTargetSelf>
+          <canTargetMutants>true</canTargetMutants>
+          <neverTargetIncapacitated>true</neverTargetIncapacitated>
+        </targetingParameters>
+        <hediff>Hdf_Spot_T1</hediff>
+      </li>
+    </comps>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>1.1</IncomingDamageFactor>
+        </statFactors>
+        <statOffsets>
+          <MeleeHitChance>-0.5</MeleeHitChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="UWC_Ability_Buff_TI">
+    <defName>Hdf_Spot_T1</defName>
+    <label>spotted aura (T1)</label>
+    <description>Nearby enemies are debuffed by the target.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1800</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+    </comps>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>1.1</IncomingDamageFactor>
+        </statFactors>
+        <statOffsets>
+          <MeleeHitChance>-0.5</MeleeHitChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ========== Hunker down! ========== -->
+
+  <HediffDef ParentName="UWC_Ability_Buff_TI">
+    <defName>Hdf_Base_HunkerDown_T1</defName>
+    <label>Hunker down!</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>The grenadier is taking cover but still capable of reduced movement.</description>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_DisappearsDisableable">
+        <disappearsAfterTicks>2500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>-0.5</IncomingDamageFactor>
+        </statFactors>
+        <statOffsets>
+          <MoveSpeed>-2.5</MoveSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

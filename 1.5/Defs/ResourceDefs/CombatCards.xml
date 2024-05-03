@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--=============== CC Basic ====================-->
+
+    <ThingDef ParentName="ResourceBase">
+        <defName>CombatCards_TI</defName>
+        <label>Basic combat cards</label>
+        <description>Biocoded or encrypted cards written with basic info regarding friendly equipment, manpower and tactics. Interpreted by advanced classifier AI they can be used in some urbworld weapons to power special abilities.</description>
+        <possessionCount>6</possessionCount>
+        <graphicData>
+            <texPath>Resource/CombatCard</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+            <color>(157,226,0)</color>
+        </graphicData>
+        <soundInteract>Metal_Drop</soundInteract>
+        <soundDrop>Standard_Drop</soundDrop>
+        <stackLimit>150</stackLimit>
+        <healthAffectsPrice>false</healthAffectsPrice>
+        <statBases>
+            <MaxHitPoints>70</MaxHitPoints>
+            <MarketValue>1.05</MarketValue>
+            <Mass>0.2</Mass>
+            <Flammability>0.6</Flammability>
+            <DeteriorationRate>2.0</DeteriorationRate>
+        </statBases>
+        <intricate>true</intricate>
+        <thingCategories>
+            <li>Manufactured</li>
+        </thingCategories>
+        <allowedArchonexusCount>150</allowedArchonexusCount>
+    </ThingDef>
+
+  <!--=============== CC Basic Recipe ====================-->
+
+    <RecipeDef>
+        <defName>Make_CombatCard_Basic</defName>
+        <label>make 20 basic combat cards</label>
+        <description>Make 20 basic combat cards.</description>
+        <jobString>Making 20 basic combat cards.</jobString>
+        <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Machining</soundWorking>
+        <workAmount>5000</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>18</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Silver</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>4</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>Silver</li>
+                <li>ComponentIndustrial</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <CombatCards_TI>20</CombatCards_TI>
+        </products>
+        <skillRequirements>
+            <Intellectual>4</Intellectual>
+        </skillRequirements>
+        <workSkill>Crafting</workSkill>
+        <displayPriority>0</displayPriority>
+    </RecipeDef>
+
+</Defs>

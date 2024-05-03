@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+		<ThingCategoryDef>
+			<defName>Ammo115x19mmC</defName>
+			<label>11.5x19mm caseless</label>
+			<parent>AmmoPistols</parent>
+		  	<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+		</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+		<CombatExtended.AmmoSetDef >
+			<defName>AmmoSet_115x19mmC</defName>
+			<label>11.5x19mm caseless</label>
+			<ammoTypes>
+				<Ammo_115x19mmC_FMJ>Bullet_115x19mmC_FMJ</Ammo_115x19mmC_FMJ>
+				<Ammo_115x19mmC_AP>Bullet_115x19mmC_AP</Ammo_115x19mmC_AP>
+				<Ammo_115x19mmC_HP>Bullet_115x19mmC_HP</Ammo_115x19mmC_HP>
+				<Ammo_115x19mmC_APS MayRequire="Safair.ArmorPiercingSpecial">Bullet_115x19mmC_APS</Ammo_115x19mmC_APS>
+			</ammoTypes>
+			<similarTo>AmmoSet_Pistol</similarTo>
+		</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+		<ThingDef  Class="CombatExtended.AmmoDef" Name="115x19mmCBase" ParentName="SmallAmmoBase" Abstract="True">
+			<description>Handgun cartridge envloped in solid propellant; derived from the venerable .45 ACP.</description>
+			<statBases>
+			  <Mass>0.015</Mass>
+			  <Bulk>0.01</Bulk>
+			</statBases>
+			<tradeTags>
+				<li>CE_AutoEnableTrade</li>
+				<li>CE_AutoEnableCrafting</li>
+			</tradeTags>
+			<thingCategories>
+				<li>Ammo115x19mmC</li>
+			</thingCategories>
+    		<stackLimit>5000</stackLimit>	
+		</ThingDef>
+
+		<ThingDef  Class="CombatExtended.AmmoDef" ParentName="115x19mmCBase">
+			<defName>Ammo_115x19mmC_FMJ</defName>
+			<label>11.5x19mmC cartridge (FMJ)</label>
+			<graphicData>
+				<texPath>Things/Ammo/Pistol/FMJ</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>0.07</MarketValue>
+			</statBases>
+			<ammoClass>FullMetalJacket</ammoClass>
+			<cookOffProjectile>Bullet_115x19mmC_FMJ</cookOffProjectile>
+		</ThingDef>
+
+		<ThingDef  Class="CombatExtended.AmmoDef" ParentName="115x19mmCBase">
+			<defName>Ammo_115x19mmC_AP</defName>
+			<label>11.5x19mmC cartridge (AP)</label>
+			<graphicData>
+				<texPath>Things/Ammo/Pistol/AP</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>0.07</MarketValue>
+			</statBases>
+			<ammoClass>ArmorPiercing</ammoClass>
+			<cookOffProjectile>Bullet_115x19mmC_AP</cookOffProjectile>
+		</ThingDef>
+
+		<ThingDef  Class="CombatExtended.AmmoDef" ParentName="115x19mmCBase">
+			<defName>Ammo_115x19mmC_HP</defName>
+			<label>11.5x19mmC cartridge (HP)</label>
+			<graphicData>
+				<texPath>Things/Ammo/Pistol/HP</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>0.07</MarketValue>
+			</statBases>
+			<ammoClass>HollowPoint</ammoClass>
+			<cookOffProjectile>Bullet_115x19mmC_HP</cookOffProjectile>
+		</ThingDef>
+
+		<ThingDef MayRequire="Safair.ArmorPiercingSpecial" Class="CombatExtended.AmmoDef" ParentName="115x19mmCBase">
+			<defName>Ammo_115x19mmC_APS</defName>
+			<label>11.5x19mmC cartridge (AP-S)</label>
+			<graphicData>
+				<texPath>Ammo/APS</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>0.09</MarketValue>
+			</statBases>
+			<ammoClass>SpecialAP</ammoClass>
+			<cookOffProjectile>Bullet_115x19mmC_APS</cookOffProjectile>
+		</ThingDef>
+
+		<!-- ================== Projectiles ================== -->
+
+		<ThingDef  Class="CombatExtended.AmmoDef" Name="Base115x19mmCBullet" ParentName="BaseBulletCE" Abstract="true">
+			<thingClass>CombatExtended.BulletCE</thingClass>
+    		<graphicData>
+				<texPath>Things/Projectile/Bullet_Small</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<projectile Class="CombatExtended.ProjectilePropertiesCE">
+				<damageDef>Bullet</damageDef>
+				<speed>74</speed>
+				<dropsCasings>false</dropsCasings>
+			</projectile>
+		</ThingDef>
+
+		<ThingDef  Class="CombatExtended.AmmoDef" ParentName="Base115x19mmCBullet">
+			<defName>Bullet_115x19mmC_FMJ</defName>
+			<label>11.5x19mmC bullet (FMJ)</label>
+			<projectile Class="CombatExtended.ProjectilePropertiesCE">
+				<damageAmountBase>14</damageAmountBase>
+				<armorPenetrationSharp>3</armorPenetrationSharp>
+				<armorPenetrationBlunt>16.42</armorPenetrationBlunt>
+			</projectile>
+		</ThingDef>
+
+		<ThingDef  Class="CombatExtended.AmmoDef" ParentName="Base115x19mmCBullet">
+			<defName>Bullet_115x19mmC_AP</defName>
+			<label>11.5x19mmC bullet (AP)</label>
+			<projectile Class="CombatExtended.ProjectilePropertiesCE">
+				<damageAmountBase>10</damageAmountBase>
+				<armorPenetrationSharp>6</armorPenetrationSharp>
+				<armorPenetrationBlunt>16.42</armorPenetrationBlunt>
+			</projectile>
+		</ThingDef>
+
+		<ThingDef  Class="CombatExtended.AmmoDef" ParentName="Base115x19mmCBullet">
+			<defName>Bullet_115x19mmC_HP</defName>
+			<label>11.5x19mmC bullet (HP)</label>
+			<projectile Class="CombatExtended.ProjectilePropertiesCE">
+				<damageAmountBase>19</damageAmountBase>
+				<armorPenetrationSharp>2</armorPenetrationSharp>
+				<armorPenetrationBlunt>16.42</armorPenetrationBlunt>
+			</projectile>
+		</ThingDef>
+
+		<ThingDef MayRequire="Safair.ArmorPiercingSpecial" Class="CombatExtended.AmmoDef" ParentName="Base115x19mmCBullet">
+			<defName>Bullet_115x19mmC_APS</defName>
+			<label>11.5x19mmC bullet (AP-S)</label>
+			<projectile Class="CombatExtended.ProjectilePropertiesCE">
+				<damageAmountBase>8</damageAmountBase>
+				<armorPenetrationSharp>9</armorPenetrationSharp>
+				<armorPenetrationBlunt>21.35</armorPenetrationBlunt>
+			</projectile>
+		</ThingDef>
+  
+  <!-- ==================== Recipes ========================== -->
+
+
+    	<RecipeDef  ParentName="AmmoRecipeBase">
+    	  <defName>MakeAmmo_115x19mmC_FMJ</defName>
+    	  <label>make 11.5x19mmC (FMJ) cartridge x500</label>
+    	  <description>Craft 500 11.5x19mmC (FMJ) cartridges.</description>
+    	  <jobString>Making 11.5x19mmC (FMJ) cartridges.</jobString>
+    	  <ingredients>
+    	    <li>
+    	      <filter>
+    	        <thingDefs>
+    	          <li>Steel</li>
+    	        </thingDefs>
+    	      </filter>
+    	      <count>16</count>
+    	    </li>
+    	  </ingredients>
+    	  <fixedIngredientFilter>
+    	    <thingDefs>
+    	      <li>Steel</li>
+    	    </thingDefs>
+    	  </fixedIngredientFilter>
+    	  <products>
+    	    <Ammo_115x19mmC_FMJ>500</Ammo_115x19mmC_FMJ>
+    	  </products>
+    	  <workAmount>1600</workAmount>
+    	</RecipeDef>
+
+    	<RecipeDef  ParentName="AmmoRecipeBase">
+    	  <defName>MakeAmmo_115x19mmC_AP</defName>
+    	  <label>make 11.5x19mmC (AP) cartridge x500</label>
+    	  <description>Craft 500 11.5x19mmC (AP) cartridges.</description>
+    	  <jobString>Making 11.5x19mmC (AP) cartridges.</jobString>
+    	  <ingredients>
+    	    <li>
+    	      <filter>
+    	        <thingDefs>
+    	          <li>Steel</li>
+    	        </thingDefs>
+    	      </filter>
+    	      <count>16</count>
+    	    </li>
+    	  </ingredients>
+    	  <fixedIngredientFilter>
+    	    <thingDefs>
+    	      <li>Steel</li>
+    	    </thingDefs>
+    	  </fixedIngredientFilter>
+    	  <products>
+    	    <Ammo_115x19mmC_AP>500</Ammo_115x19mmC_AP>
+    	  </products>
+    	  <workAmount>1920</workAmount>
+    	</RecipeDef>
+
+    	<RecipeDef  ParentName="AmmoRecipeBase">
+    	  <defName>MakeAmmo_115x19mmC_HP</defName>
+    	  <label>make 11.5x19mmC (HP) cartridge x500</label>
+    	  <description>Craft 500 11.5x19mmC (HP) cartridges.</description>
+    	  <jobString>Making 11.5x19mmC (HP) cartridges.</jobString>
+    	  <ingredients>
+    	    <li>
+    	      <filter>
+    	        <thingDefs>
+    	          <li>Steel</li>
+    	        </thingDefs>
+    	      </filter>
+    	      <count>16</count>
+    	    </li>
+    	  </ingredients>
+    	  <fixedIngredientFilter>
+    	    <thingDefs>
+    	      <li>Steel</li>
+    	    </thingDefs>
+    	  </fixedIngredientFilter>
+    	  <products>
+    	    <Ammo_115x19mmC_HP>500</Ammo_115x19mmC_HP>
+    	  </products>
+    	  <workAmount>1600</workAmount>
+    	</RecipeDef>
+
+		<RecipeDef MayRequire="Safair.ArmorPiercingSpecial" ParentName="AmmoRecipeBase">
+    	  <defName>MakeAmmo_115x19mmC_APS</defName>
+    	  <label>make 11.5x19mmC (AP-S) cartridge x500</label>
+    	  <description>Craft 500 11.5x19mmC (AP-S) cartridges.</description>
+    	  <jobString>Making 11.5x19mmC (AP-S) cartridges.</jobString>
+    	  <ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>11</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Uranium</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Chemfuel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Uranium</li>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+    	  <products>
+    	    <Ammo_115x19mmC_APS>500</Ammo_115x19mmC_APS>
+    	  </products>
+    	  <workAmount>2880</workAmount>
+    	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Now requies VEF -->
+
+  <ThingDef ParentName="BaseCaselessModularWeapon">
+    <defName>UWCEI_AGL_TI_Gren</defName>
+    <label>Advanced grenade launcher</label>
+    <description>Computer guided grenade launcher. Defeats cover by marking then airbursting grenades near the target.\n\nThis Sradi Security Tech AGL-3 comes equipped with a standard grenadier deck, used by urbworld soldiers to provide accurate and effective support to squadmates.\n\nAbilities:
+    -Thermal spotting; provides nearby friendlies with faster fire rate and increased accuracy.\n\n
+    -Guided HE grenade; Self-propelled grenade that targets a single enemy, structure, location etc.\n\n
+    -Disrupting grenade; flare and smoke grenade, illuminates and distracts enemies.\n\n
+    -Spotting aura; "paint" an enemy who will worsen nearby allies in turn.</description>
+    <graphicData>
+      <texPath>agl</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_AGL3</soundInteract>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>MicroelectronicsBasics</li>
+        <li>PrecisionRifling</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+    <statBases>
+      <WorkToMake>70000</WorkToMake>
+      <Mass>5</Mass>
+      <RangedWeapon_Cooldown>4.5</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <Plasteel>25</Plasteel>
+      <Chemfuel>20</Chemfuel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+    </costList>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>1.5</ShootingAccuracyPawn>
+    </equippedStatOffsets>
+    <verbs>
+
+      <li>
+				<label>Airburst grenade</label>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <forcedMissRadius>2</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <defaultProjectile>Bullet_AGL3_AB</defaultProjectile>
+        <warmupTime>3</warmupTime>
+        <range>23.9</range>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+				<!--commandIcon>Things/Item/Equipment/WeaponRanged/HellcatRifle</commandIcon-->
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <!--====effects=====-->
+		    <aimingLineMote>Mote_AGL_Aim_Red</aimingLineMote>
+		    <aimingChargeMote>Mote_AGL_Dot_Red</aimingChargeMote>
+		    <aimingChargeMoteOffset>1.27</aimingChargeMoteOffset>
+		    <beamTargetsGround>true</beamTargetsGround>
+        <!--====effects=====-->
+      </li>
+
+      <li>
+				<label>HE grenade</label>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Guided_HYAB</defaultProjectile>
+        <forcedMissRadius>1</forcedMissRadius>
+				<warmupTime>4</warmupTime>
+				<range>34.9</range>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+				<onlyManualCast>true</onlyManualCast>
+				<commandIcon>UI/BDM</commandIcon>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+        <!--====effects=====-->
+		    <aimingLineMote>Mote_AGL_Aim_Orange</aimingLineMote>
+		    <aimingChargeMote>Mote_AGL_Dot_Orange</aimingChargeMote>
+		    <aimingChargeMoteOffset>1.27</aimingChargeMoteOffset>
+		    <beamTargetsGround>true</beamTargetsGround>
+        <soundAiming>CompCom_Reload_Loading_Ready</soundAiming>
+        <!--====effects=====-->
+			</li>
+
+      <li>
+				<label>Disrupting grenade</label>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>Bullet_Guided_DisruptGrenade</defaultProjectile>
+        <forcedMissRadius>0.5</forcedMissRadius>
+				<warmupTime>5</warmupTime>
+				<range>46.9</range>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<onlyManualCast>true</onlyManualCast>
+        <hasStandardCommand>true</hasStandardCommand>
+				<commandIcon>UI/SpottingRound</commandIcon>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+        <!--====effects=====-->
+		    <aimingLineMote>Mote_AGL_Aim_Orange</aimingLineMote>
+		    <aimingChargeMote>Mote_AGL_Dot_Orange</aimingChargeMote>
+		    <aimingChargeMoteOffset>1.27</aimingChargeMoteOffset>
+		    <beamTargetsGround>true</beamTargetsGround>
+        <soundAiming>CompCom_Reload_Loading_Ready</soundAiming>
+        <!--====effects=====-->
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+			</li>
+
+      <li>
+				<label>spotting aura (T1)</label>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>Bullet_SpotDriver</defaultProjectile>
+				<warmupTime>6</warmupTime>
+				<range>49.9</range>
+        <forcedMissRadius>0.001</forcedMissRadius>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<onlyManualCast>true</onlyManualCast>
+        <hasStandardCommand>true</hasStandardCommand>
+				<commandIcon>UI/MultiTargetSpot</commandIcon>
+				<targetParams>
+					<canTargetLocations>false</canTargetLocations>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+				</targetParams>
+        <!--====effects=====-->
+		    <aimingLineMote>Mote_AGL_Aim_Orange</aimingLineMote>
+		    <aimingChargeMote>Mote_AGL_Dot_Orange</aimingChargeMote>
+		    <aimingChargeMoteOffset>1.27</aimingChargeMoteOffset>
+		    <beamTargetsGround>true</beamTargetsGround>
+        <soundAiming>CompCom_Reload_Loading_Ready</soundAiming>
+        <!--====effects=====-->
+        <rangedFireRulepack>Combat_RangedBase</rangedFireRulepack>
+			</li>
+      
+    </verbs>
+    <weaponTags>
+      <li>RangedHeavy</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>2.06</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>2.06</cooldownTime>
+      </li>
+    </tools>
+    <comps Inherit="False">
+
+      <li Class="CompProperties_EquippableAbilityReloadable">
+        <abilityDef>UWC_ThermalSpotter_T1</abilityDef>
+        <maxCharges>3</maxCharges>
+        <soundReload>Interact_AGL3</soundReload>
+        <chargeNoun>combat cards</chargeNoun>
+        <ammoDef>CombatCards_TI</ammoDef>
+        <ammoCountPerCharge>1</ammoCountPerCharge>
+        <baseReloadTicks>60</baseReloadTicks>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Styleable"/>
+      <li Class="CompProperties_Biocodable"/>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+      <!--====MVCF====-->
+      <li Class="MVCF.Comps.CompProperties_VerbProps">
+				<compClass>MVCF.Comps.Comp_VerbProps</compClass>
+				<verbProps>
+					<li>
+						<label>Airburst grenade</label>
+						<canBeToggled>false</canBeToggled>
+						<separateToggle>true</separateToggle>
+						<description>Unguided.</description>
+            <comps>
+              <li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+                <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+                <cooldownTime>3.5</cooldownTime> <!-- 3.5 -->
+              </li>
+            </comps>
+					</li>
+          
+					<li>
+						<label>HE grenade</label>
+						<canBeToggled>false</canBeToggled>
+						<separateToggle>true</separateToggle>
+						<description>Laser-guided, high-yield.</description>
+            <comps>
+              <li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+                <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+                <cooldownTime>25</cooldownTime> <!-- 25 -->
+              </li>
+              <li Class="MVCF.Reloading.Comps.VerbCompProperties_Reloadable">
+                <compClass>MVCF.Reloading.Comps.VerbComp_Reloadable</compClass>
+                <AmmoFilter>
+                  <thingDefs>
+                    <li>CombatCards_TI</li>
+                  </thingDefs>
+                </AmmoFilter>
+                <ItemsPerShot>1</ItemsPerShot>
+                <MaxShots>5</MaxShots>
+                <ReloadSound>Interact_AGL3</ReloadSound>
+                <ReloadTimePerShot>1</ReloadTimePerShot>
+              </li>
+            </comps>
+          </li>
+
+          <li>
+						<label>Disrupting grenade</label>
+						<canBeToggled>false</canBeToggled>
+						<separateToggle>true</separateToggle>
+						<description>AOE debuff.</description>
+            <graphic>
+              <texPath>UI/SpottingRound</texPath>
+              <graphicClass>Graphic_Single</graphicClass>
+            </graphic>
+            <comps>
+              <li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+                <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+                <cooldownTime>30</cooldownTime> <!-- 40 -->
+              </li>
+              <li Class="MVCF.Reloading.Comps.VerbCompProperties_Reloadable">
+                <compClass>MVCF.Reloading.Comps.VerbComp_Reloadable</compClass>
+                <AmmoFilter>
+                  <thingDefs>
+                    <li>CombatCards_TI</li>
+                  </thingDefs>
+                </AmmoFilter>
+                <ItemsPerShot>1</ItemsPerShot>
+                <MaxShots>3</MaxShots>
+                <ReloadSound>Interact_AGL3</ReloadSound>
+                <ReloadTimePerShot>3</ReloadTimePerShot>
+              </li>
+            </comps>
+          </li>
+
+          <li>
+						<label>spotting aura (T1)</label>
+						<canBeToggled>false</canBeToggled>
+						<separateToggle>true</separateToggle>
+						<description>Area-target debuff.</description>
+            <graphic>
+              <texPath>UI/MultiTargetSpot</texPath>
+              <graphicClass>Graphic_Single</graphicClass>
+            </graphic>
+            <comps>
+              <li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+                <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+                <cooldownTime>45</cooldownTime> <!-- 55 -->
+              </li>
+              <li Class="MVCF.Reloading.Comps.VerbCompProperties_Reloadable">
+                <compClass>MVCF.Reloading.Comps.VerbComp_Reloadable</compClass>
+                <AmmoFilter>
+                  <thingDefs>
+                    <li>CombatCards_TI</li>
+                  </thingDefs>
+                </AmmoFilter>
+                <ItemsPerShot>1</ItemsPerShot>
+                <MaxShots>3</MaxShots>
+                <ReloadSound>Interact_AGL3</ReloadSound>
+                <ReloadTimePerShot>3</ReloadTimePerShot>
+              </li>
+            </comps>
+          </li>
+
+				</verbProps>
+			</li>
+      <!--====MVCF====-->
+    </comps>
+  </ThingDef>
+
+</Defs>

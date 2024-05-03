@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+        <!-- Basics - No research -->
+
+        <!-- Basic machine pistol -->
+        <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>Novo_Basic_MP</defName>
+          <customName>basic HMP</customName>
+          <weapon>UWCEI_Modular_Caseless_SMG</weapon>
+          <weaponTags>
+              <li>Gun</li>
+              <li>ShortShots</li>
+          </weaponTags>
+          <requiredParts>
+            <li>CHSMG_Mag_Standard</li>
+            <li>CHSMG_Frame_Standard</li>
+          </requiredParts>
+          <optionalPartsCount>3</optionalPartsCount>
+          <optionalParts>
+            <li>CHSMG_Mag_Ext</li>
+            <li>CHSMG_Stock_Folded</li>
+            <li>CHSMG_Fore_Loop</li>
+            <li>CHSMG_Fore_Flashlight</li>
+          </optionalParts>
+        </ModularWeapons.GunsmithPresetDef>
+
+        <!-- Basic SMG -->
+        <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>Novo_Basic_SMG</defName>
+          <customName>basic HSMG</customName>
+          <weapon>UWCEI_Modular_Caseless_SMG</weapon>
+          <weaponTags>
+              <li>Gun</li>
+          </weaponTags>
+          <requiredParts>
+            <li>CHSMG_Mag_Standard</li>
+            <li>CHSMG_Frame_Standard</li>
+            <li>CHSMG_Stock_Ext</li>
+          </requiredParts>
+          <optionalPartsCount>6</optionalPartsCount>
+          <optionalParts>
+            <li>CHSMG_Mag_Ext</li>
+            <li>CHSMG_Fore_Loop</li>
+            <li>CHSMG_Fore_Flashlight</li>
+            <li>CHSMG_Fore_Grip</li>
+            <li>CHSMG_Fore_Laser</li>
+            <li>CHSMG_Muzzle_SuppressorL</li>
+            <li>CHSMG_Optic_RedDot</li>
+          </optionalParts>
+        </ModularWeapons.GunsmithPresetDef>
+
+        <!-- Industrial research -->
+
+        <!-- Industrial Machine pistol -->
+        <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>Novo_Industrial_MP</defName>
+          <customName>caseless HMP</customName>
+          <weapon>UWCEI_Modular_Caseless_SMG</weapon>
+          <weaponTags>
+              <li>IndustrialGunAdvanced</li>
+              <li>ShortShots</li>
+          </weaponTags>
+          <requiredParts>
+            <li>CHSMG_Mag_Ext</li>
+            <li>CHSMG_Frame_Light</li>
+          </requiredParts>
+          <optionalPartsCount>8</optionalPartsCount>
+          <optionalParts>
+            <li>CHSMG_Mag_Drum</li>
+            <li>CHSMG_Stock_Folded</li>
+            <li>CHSMG_Fore_Loop</li>
+            <li>CHSMG_Fore_Flashlight</li>
+            <li>CHSMG_Fore_Laser</li>
+            <li>CHSMG_Fore_Lightbox</li>
+            <li>CHSMG_Muzzle_Compensator</li>
+            <li>CHSMG_Muzzle_SuppressorL</li>
+            <li>CHSMG_Optic_RedDot</li>
+          </optionalParts>
+        </ModularWeapons.GunsmithPresetDef>
+
+        <!-- Industrial HSMG -->
+        <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>Novo_Industrial_SMG</defName>
+          <customName>caseless HSMG</customName>
+          <weapon>UWCEI_Modular_Caseless_SMG</weapon>
+          <weaponTags>
+              <li>IndustrialGunAdvanced</li>
+          </weaponTags>
+          <requiredParts>
+            <li>CHSMG_Mag_Ext</li>
+            <li>CHSMG_Frame_Standard</li>
+            <li>CHSMG_Stock_Ext</li>
+            <li>CHSMG_Optic_RedDot</li>
+            <li>CHSMG_Fore_Grip</li>
+          </requiredParts>
+          <optionalPartsCount>7</optionalPartsCount>
+          <optionalParts>
+            <li>CHSMG_Mag_Drum</li>
+            <li>CHSMG_Fore_Grip</li>
+            <li>CHSMG_Fore_Lightbox</li>
+            <li>CHSMG_Muzzle_Compensator</li>
+            <li>CHSMG_Muzzle_SuppressorH</li>
+            <li>CHSMG_Optic_Holo</li>
+            <li>CHSMG_Optic_ACOG</li>
+          </optionalParts>
+        </ModularWeapons.GunsmithPresetDef>
+
+        <!-- Industrial HSMG -->
+        <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>Novo_Enforcer_SMG</defName>
+          <customName>enforcer SMG</customName>
+          <weapon>UWCEI_Modular_Caseless_SMG</weapon>
+          <weaponTags>
+              <li>IndustrialGunAdvanced</li>
+              <li>AssaultRifle</li>
+          </weaponTags>
+          <requiredParts>
+            <li>CHSMG_Mag_Drum</li>
+            <li>CHSMG_Frame_Standard</li>
+            <li>CHSMG_Stock_Full</li>
+            <li>CHSMG_Optic_Scope</li>
+            <li>CHSMG_Muzzle_Enforcer</li>
+          </requiredParts>
+          <optionalPartsCount>1</optionalPartsCount>
+          <optionalParts>
+            <li>CHSMG_Optic_SmartDot</li>
+            <li>CHSMG_Optic_SmartHolo</li>
+          </optionalParts>
+        </ModularWeapons.GunsmithPresetDef>
+
+</Defs>

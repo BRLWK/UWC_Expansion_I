@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Urbworld Weaponry: Caseless</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAdd">
+	            	<xpath>Defs</xpath>
+	            	<value>
+
+                  <ThingDef MayRequire="Ludeon.RimWorld.Anomaly" ParentName="BFT_Bullet_Parent">
+                    <defName>Bullet_CHSMG_BF</defName>
+                    <label>bioferrite SMG bullet</label>
+                    <projectile>
+                      <damageAmountBase>4</damageAmountBase>
+                      <armorPenetrationBase>0.25</armorPenetrationBase>
+                      <speed>65</speed>
+                    </projectile>
+                  </ThingDef>
+                    
+                  <ModularWeapons.ModularPartDef>
+                    <defName>CHSMG_Frame_BFT</defName>
+                    <label>bioferrite frame</label>
+                    <description>Reinforced polyplas frame firing incendiary bioferrite cartridges.</description>
+                    <kind>CHSMG_Frame</kind>
+                    <path>Reciever_65</path>
+                    <!--=====-->
+                    <massFactor>-0.05</massFactor>
+                    <projectileFactor>Bullet_CHSMG_BF</projectileFactor>
+                    <ticksBetweenShotsFactor>-4</ticksBetweenShotsFactor>
+                    <rangeFactor>-4</rangeFactor>
+                    <burstCountFactor>2</burstCountFactor>
+                    <!--=====-->
+                    <costList>
+                      <Chemfuel>5</Chemfuel>
+                      <Plasteel>10</Plasteel>
+                      <Steel>5</Steel>
+                      <ComponentIndustrial>2</ComponentIndustrial>
+                      <Bioferrite>25</Bioferrite>
+                    </costList>
+                    <researchPrerequisites>
+                      <li>BioferriteIgnition</li>
+                    </researchPrerequisites>
+                  </ModularWeapons.ModularPartDef>
+
+                  <ThingDef MayRequire="Ludeon.RimWorld.Anomaly" ParentName="BFT_Bullet_Parent">
+                    <defName>Bullet_CCCBF</defName>
+                    <label>bioferrite pistol bullet</label>
+                    <projectile>
+                      <damageAmountBase>6</damageAmountBase>
+                      <armorPenetrationBase>0.30</armorPenetrationBase>
+                      <speed>75</speed>
+                    </projectile>
+                  </ThingDef>
+
+                  <ModularWeapons.ModularPartDef>
+                    <defName>K10_Magazine_BFT</defName>
+                    <label>bioferrite magazine</label>
+                    <description>Adds an additional shot per burst of bioferrite incendiary bullets.</description>
+                    <kind>K10_Mag</kind>
+                    <path>Mag_24</path>
+                    <!--=====-->
+                    <burstCountFactor>1</burstCountFactor>
+                    <rangeFactor>-2</rangeFactor>
+                    <projectileFactor>Bullet_CCCBF</projectileFactor>
+                    <!--=====-->
+                    <costList>
+                      <Plasteel>5</Plasteel>
+                      <Steel>15</Steel>   
+	                    <ComponentIndustrial>2</ComponentIndustrial>
+                      <Bioferrite>25</Bioferrite>
+                    </costList>
+                    <researchPrerequisites>
+                      <li>BioferriteIgnition</li>
+                    </researchPrerequisites>
+                  </ModularWeapons.ModularPartDef>
+
+	            	</value>
+	            </li>
+				
+			</operations>
+		</match>
+	</Operation>
+
+
+	
+	
+	
+	
+
+
+	
+</Patch>

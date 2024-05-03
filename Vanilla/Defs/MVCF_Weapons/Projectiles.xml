@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!--=========Flashbang===========-->
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>UWC_Flashbang</defName>
+        <label>Flashbang grenade</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <texPath>Things/Projectile/Grenade</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>3</explosionRadius>
+            <damageDef>Stun</damageDef>
+            <!-- Use default damage from explosion def -->
+            <explosionDelay>40</explosionDelay>
+            <speed>16</speed>
+            <spinRate>1.4</spinRate>
+            <arcHeightFactor>6</arcHeightFactor>
+            <shadowSize>0.6</shadowSize>
+            <flyOverhead>true</flyOverhead>
+        </projectile>
+        <comps>
+    		<li Class="VFECore.CompProperties_HomingProjectile">
+    			<homingDistanceFractionPassed>0.5</homingDistanceFractionPassed>
+    			<homingCorrectionTickRate>1</homingCorrectionTickRate>
+    			<initialDispersionFromTarget>6</initialDispersionFromTarget>
+    			<!--hitSound>RM_Hit_Needler</hitSound-->
+    		</li>
+    	</comps>
+    </ThingDef>
+
+    <!--=========Airburst===========-->
+    
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>Bullet_Guided_LYAB</defName>
+        <label>Low-yield airburst grenade</label>
+        <graphicData>
+            <texPath>Things/Projectile/Grenade</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <thingClass>Projectile_Explosive</thingClass>
+        <projectile>
+            <speed>35</speed>
+            <damageDef>Bomb</damageDef>
+            <!-- Use default damage from explosion def -->
+            <explosionRadius>2.5</explosionRadius>
+            <damageAmountBase>9</damageAmountBase> <!-- 4 -->
+            <armorPenetrationBase>0.1</armorPenetrationBase>
+            <stoppingPower>2</stoppingPower>
+            <arcHeightFactor>0</arcHeightFactor>
+            <shadowSize>0.4</shadowSize>
+            <screenShakeFactor>0.1</screenShakeFactor>
+            <flyOverhead>true</flyOverhead>
+        </projectile>
+        <comps>
+  		<li Class="VFECore.CompProperties_HomingProjectile">
+  			<homingDistanceFractionPassed>0.25</homingDistanceFractionPassed>
+  			<homingCorrectionTickRate>2</homingCorrectionTickRate>
+  			<initialDispersionFromTarget>3</initialDispersionFromTarget>
+  			<!--hitSound>RM_Hit_Needler</hitSound-->
+  		</li>
+  	</comps>
+  </ThingDef>
+
+    <!--=========HYHE===========-->
+
+  <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>Bullet_Guided_HYAG</defName>
+        <label>High-yield airburst grenade</label>
+        <graphicData>
+            <texPath>Things/Projectile/Grenade</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <thingClass>Projectile_Explosive</thingClass>
+        <projectile>
+            <speed>35</speed>
+            <damageDef>Bomb</damageDef>
+            <!-- Use default damage from explosion def -->
+            <explosionRadius>2</explosionRadius>
+            <arcHeightFactor>0</arcHeightFactor>
+            <shadowSize>0.4</shadowSize>
+            <screenShakeFactor>0.1</screenShakeFactor>
+            <flyOverhead>true</flyOverhead>
+        </projectile>
+        <comps>
+  		<li Class="VFECore.CompProperties_HomingProjectile">
+  			<homingDistanceFractionPassed>0.75</homingDistanceFractionPassed>
+  			<homingCorrectionTickRate>3</homingCorrectionTickRate>
+  			<initialDispersionFromTarget>4</initialDispersionFromTarget>
+  			<!--hitSound>RM_Hit_Needler</hitSound-->
+  		</li>
+  	</comps>
+  </ThingDef>
+
+    <!--=========Rifle API Ability===========-->
+
+    <ThingDef Name="BFT_Bullet_Parent" ParentName="BaseBullet">
+      <defName>Bullet_API_BRifle</defName>
+      <label>API bullet</label>
+      <graphicData>
+        <texPath>Things/Projectile/Bullet_Small</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <drawSize>1.3</drawSize>
+        <shaderType>TransparentPostLight</shaderType>
+        <color>(200, 200, 200)</color>  
+      </graphicData>
+      <projectile>
+        <damageDef>BFBullet</damageDef>
+        <damageAmountBase>22</damageAmountBase>
+	      <armorPenetrationBase>1</armorPenetrationBase>
+        <stoppingPower>1</stoppingPower>
+        <speed>85</speed>
+        <bulletChanceToStartFire>1</bulletChanceToStartFire>
+        <landedEffecter>BFT_Impact_Effect</landedEffecter>
+      </projectile>
+    </ThingDef>
+
+    <!--=========Smoke grenade===========-->
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+      <defName>UWC_SmokeGrenade</defName>
+      <label>smoke grenade</label>
+        <graphicData>
+            <texPath>Things/Projectile/Grenade</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+      <thingClass>Projectile_Explosive</thingClass>
+      <projectile>
+        <damageDef>Smoke</damageDef>
+        <!-- Use default damage from explosion def -->
+        <explosionRadius>2.4</explosionRadius>
+        <postExplosionGasType>BlindSmoke</postExplosionGasType>
+        <ai_IsIncendiary>true</ai_IsIncendiary>
+        <screenShakeFactor>0.2</screenShakeFactor>
+      </projectile>
+    </ThingDef>
+
+
+
+
+</Defs>

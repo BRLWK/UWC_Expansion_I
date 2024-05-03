@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	    <!-- ============================================== -->
+	
+	<ThingDef ParentName="CaselessGunMMeleeBase">
+		<defName>UWCEI_CarbineAdv_TI</defName>
+		<label>Advanced caseless carbine</label>
+		<description>Firearm known for its 50-round magazine and high rate of fire. Manufactured by Sradi Security Tech, a long-standing corporation renowned for its high-quality small arms.\n\nFitted with advanced optics and a superposed small-bore grenade launcher, utilizes combat cards for a variety of special abilities.\n\nAbilities:
+    	-Gunlink; CQB special, the operator can use their weapon with enhanced accuracy much quicker after moving.\n\n
+    	-Flashbang; Throw a small self-guided flashbang.\n\n
+    	-Airburst; Overbarrel small-bore airburst, guides itself to the target.</description>
+		<graphicData>
+			<texPath>CaselessBonus/CARGL</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+            <drawSize MayRequire="CarnySenpai.EnableOversizedWeapons">0.88</drawSize>
+            <drawOffsetNorth MayRequire="CarnySenpai.EnableOversizedWeapons">(-0.05, 0.0, 0.08)</drawOffsetNorth>
+            <drawOffsetSouth MayRequire="CarnySenpai.EnableOversizedWeapons">(-0.05, 0.0, -0.08)</drawOffsetSouth>
+            <drawOffsetEast MayRequire="CarnySenpai.EnableOversizedWeapons">(0.08, 0.0, -0.05)</drawOffsetEast>
+            <drawOffsetWest MayRequire="CarnySenpai.EnableOversizedWeapons">(-0.08, 0.0, -0.05)</drawOffsetWest>
+		</graphicData>
+		<soundInteract>Interact_CRifle</soundInteract>
+        <recipeMaker>
+		  <researchPrerequisites>
+            <li>MicroelectronicsBasics</li>
+            <li>PrecisionRifling</li>
+          </researchPrerequisites>
+          <skillRequirements>
+            <Crafting>6</Crafting>
+          </skillRequirements>
+        </recipeMaker>
+        <weaponTags>
+          <li>IndustrialGunAdvanced</li>
+          <li>AssaultRifle</li>
+          <li>UWC_SMG</li>
+          <li>UWC_Advanced</li>
+          <li>ammo_caseless/50</li>
+        </weaponTags>
+        <weaponClasses>
+          <li>RangedLight</li>
+          <li>ShortShots</li>
+        </weaponClasses>
+	    <statBases>
+	    	<WorkToMake>55000</WorkToMake>
+	    	<Mass>3.9</Mass>
+	    	<AccuracyTouch>0.93</AccuracyTouch>
+	    	<AccuracyShort>0.82</AccuracyShort>
+	    	<AccuracyMedium>0.35</AccuracyMedium>
+	    	<AccuracyLong>0.23</AccuracyLong>
+	    	<RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+	    </statBases>
+	    <costList>
+	    	<Steel>50</Steel>
+            <Plasteel>10</Plasteel>
+            <Chemfuel>10</Chemfuel>
+	    	<ComponentIndustrial>10</ComponentIndustrial>
+	    </costList>
+        <verbs>
+
+			<li>
+				<label>Adv. carbine</label>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_CAR</defaultProjectile>
+				<warmupTime>1.9</warmupTime>
+				<range>26.9</range>
+				<burstShotCount>5</burstShotCount>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<soundCast>Shot_SilencedA</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>2</muzzleFlashScale>
+			</li>
+
+			<li>
+				<label>Flashbang grenade</label>
+				<verbClass>Verb_LaunchProjectile</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>UWC_Flashbang</defaultProjectile>
+				<warmupTime>1.5</warmupTime>
+				<forcedMissRadius>2</forcedMissRadius>
+        		<noiseRadius>4</noiseRadius>
+				<range>15.9</range>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Interact_Grenade</soundCast>
+				<targetParams>
+       			  <canTargetLocations>true</canTargetLocations>
+       			</targetParams>
+      			<requireLineOfSight>false</requireLineOfSight>
+				<rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+			</li>
+
+			<li>
+				<label>AB grenade</label>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Guided_LYAB</defaultProjectile>
+        		<forcedMissRadius>1.5</forcedMissRadius>
+				<warmupTime>2</warmupTime>
+				<range>29.9</range>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>7</muzzleFlashScale>
+				<onlyManualCast>true</onlyManualCast>
+				<commandIcon>UI/BDM</commandIcon>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+        		<!--====effects=====-->
+		    	<aimingLineMote>Mote_AGL_Aim_Orange</aimingLineMote>
+		    	<aimingChargeMote>Mote_AGL_Dot_Orange</aimingChargeMote>
+		    	<aimingChargeMoteOffset>1.27</aimingChargeMoteOffset>
+		    	<beamTargetsGround>true</beamTargetsGround>
+        		<soundAiming>CompCom_Reload_Loading_Ready</soundAiming>
+        		<!--====effects=====-->
+      			<requireLineOfSight>false</requireLineOfSight>
+			</li>
+
+		</verbs>
+
+		<comps>
+			<li Class="CompProperties_EquippableAbilityReloadable">
+      			<abilityDef>UWC_Gunlink</abilityDef>
+      			<maxCharges>3</maxCharges>
+      			<soundReload>Interact_AGL3</soundReload>
+      			<chargeNoun>combat cards</chargeNoun>
+      			<ammoDef>CombatCards_TI</ammoDef>
+      			<ammoCountPerCharge>1</ammoCountPerCharge>
+      			<baseReloadTicks>60</baseReloadTicks>
+      		</li>
+
+    	<!--====MVCF====-->
+			<li Class="MVCF.Comps.CompProperties_VerbProps">
+				<compClass>MVCF.Comps.Comp_VerbProps</compClass>
+				<verbProps>
+
+				<li>
+				<label>Flashbang grenade</label>
+				<canBeToggled>false</canBeToggled>
+				<separateToggle>true</separateToggle>
+				<description>Self guiding.</description>
+          		<comps>
+            		<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+            			<compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+            			<cooldownTime>25</cooldownTime> <!-- 25 -->
+            		</li>
+            		<li Class="MVCF.Reloading.Comps.VerbCompProperties_Reloadable">
+            			<compClass>MVCF.Reloading.Comps.VerbComp_Reloadable</compClass>
+            			<AmmoFilter>
+            			<thingDefs>
+            				<li>CombatCards_TI</li>
+            			</thingDefs>
+            			</AmmoFilter>
+            			<ItemsPerShot>1</ItemsPerShot>
+            			<MaxShots>5</MaxShots>
+            			<ReloadSound>Interact_Grenade</ReloadSound>
+            			<ReloadTimePerShot>1</ReloadTimePerShot>
+            		</li>
+          		</comps>
+        		</li>
+
+				<li>
+				<label>AB grenade</label>
+				<canBeToggled>false</canBeToggled>
+				<separateToggle>true</separateToggle>
+				<description>Self guiding, low-yield.</description>
+          		<comps>
+            		<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+            			<compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+            			<cooldownTime>22</cooldownTime> <!-- 25 -->
+            		</li>
+            		<li Class="MVCF.Reloading.Comps.VerbCompProperties_Reloadable">
+            			<compClass>MVCF.Reloading.Comps.VerbComp_Reloadable</compClass>
+            			<AmmoFilter>
+            			<thingDefs>
+            				<li>CombatCards_TI</li>
+            			</thingDefs>
+            			</AmmoFilter>
+            			<ItemsPerShot>1</ItemsPerShot>
+            			<MaxShots>3</MaxShots>
+            			<ReloadSound>Interact_Grenade</ReloadSound>
+            			<ReloadTimePerShot>1</ReloadTimePerShot>
+            		</li>
+          		</comps>
+        		</li>
+
+		</verbProps>
+		</li>
+
+    	<!--====MVCF====-->
+
+		</comps>
+		
+	</ThingDef>
+
+  <!-- ==== battle rifle ==== -->
+
+	<ThingDef ParentName="CaselessGunMMeleeBase">
+	  	<defName>UWCEI_AdvBattleRifle_TI</defName>
+	  	<label>Adv. battle rifle</label>
+	  	<description>This common infantry battle rifle was once manufactured by Green Mountain Armory (GMA), but the schematic predates the company's founding by at least several centuries.\n\nFitted with advanced optics and a magazine-fed grenade launcher, utilizes combat cards for a variety of special abilities.\n\nAbilities:
+    	-HVT; operator fires highly accurate burst of armor piercing incendiary bullets.\n\n
+    	-HE Grenade; Launch a self-guided HE-grenade.\n\n
+    	-Entrench; Improvise defenses.</description>
+	  	<graphicData>
+	  		<texPath>CaselessBonus/HBRGL/Standard</texPath>
+	  		<graphicClass>Graphic_Single</graphicClass>
+	  		<drawSize MayRequire="CarnySenpai.EnableOversizedWeapons">1</drawSize>
+	  		<drawOffsetNorth MayRequire="CarnySenpai.EnableOversizedWeapons">(-0.03, 0.0, 0.2)</drawOffsetNorth>
+	  		<drawOffsetSouth MayRequire="CarnySenpai.EnableOversizedWeapons">(-0.03, 0.0, -0.2)</drawOffsetSouth>
+	  		<drawOffsetEast MayRequire="CarnySenpai.EnableOversizedWeapons">(0.2, 0.0, -0.03)</drawOffsetEast>
+	  		<drawOffsetWest MayRequire="CarnySenpai.EnableOversizedWeapons">(-0.2, 0.0, -0.03)</drawOffsetWest>
+	  	</graphicData>
+	  	<soundInteract>Interact_CRifle</soundInteract>
+	  	<recipeMaker>
+	  		<researchPrerequisites>
+              <li>MicroelectronicsBasics</li>
+              <li>PrecisionRifling</li>
+            </researchPrerequisites>
+	  		<skillRequirements>
+	  			<Crafting>6</Crafting>
+	  		</skillRequirements>
+	  	</recipeMaker>
+	  	<weaponTags>
+	  		<li>IndustrialGunAdvanced</li>
+	  		<li>AssaultRifle</li>
+	  		<li>LongShots</li>
+          	<li>UWC_Advanced</li>
+	  		<li>ammo_caseless/30</li>
+	  	</weaponTags>
+	  	<weaponClasses>
+	  		<li>LongShots</li>
+	  	</weaponClasses>
+	  	<statBases>
+	  		<WorkToMake>26550</WorkToMake>
+	  		<Mass>3.9</Mass>
+	  		<AccuracyTouch>0.75</AccuracyTouch>
+	  		<AccuracyShort>0.89</AccuracyShort>
+	  		<AccuracyMedium>0.82</AccuracyMedium>
+	  		<AccuracyLong>0.72</AccuracyLong>
+	  		<RangedWeapon_Cooldown>2.3</RangedWeapon_Cooldown>
+	  	</statBases>
+	    <costList>
+	    	<Steel>55</Steel>
+            <Plasteel>12</Plasteel>
+            <Chemfuel>20</Chemfuel>
+	    	<ComponentIndustrial>11</ComponentIndustrial>
+	    </costList>
+	  	<verbs>
+	  		<li>
+	  			<verbClass>Verb_Shoot</verbClass>
+	  			<hasStandardCommand>true</hasStandardCommand>
+	  			<defaultProjectile>Bullet_CBR</defaultProjectile>
+	  			<warmupTime>0.5</warmupTime>
+	  			<range>37.9</range>
+	  			<soundCast>Shot_cbatrifle</soundCast>
+	  			<soundCastTail>GunTail_Heavy</soundCastTail>
+	  			<muzzleFlashScale>9</muzzleFlashScale>
+				<defaultCooldownTime>2.3</defaultCooldownTime>
+	  		</li>
+
+			<li>
+				<label>HE grenade</label>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_Guided_HYAG</defaultProjectile>
+        		<forcedMissRadius>1.5</forcedMissRadius>
+				<warmupTime>2.5</warmupTime>
+				<range>32.9</range>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>7</muzzleFlashScale>
+				<onlyManualCast>true</onlyManualCast>
+				<commandIcon>UI/BDM</commandIcon>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+        		<!--====effects=====-->
+		    	<aimingLineMote>Mote_AGL_Aim_Orange</aimingLineMote>
+		    	<aimingChargeMote>Mote_AGL_Dot_Orange</aimingChargeMote>
+		    	<aimingChargeMoteOffset>1.27</aimingChargeMoteOffset>
+		    	<beamTargetsGround>true</beamTargetsGround>
+        		<soundAiming>CompCom_Reload_Loading_Ready</soundAiming>
+        		<!--====effects=====-->
+      			<requireLineOfSight>false</requireLineOfSight>
+			</li>
+
+			<li>
+			  <label>Entrenchment</label>
+      		  <verbClass>Verb_Spawn</verbClass>
+      		  <hasStandardCommand>true</hasStandardCommand>
+      		  <warmupTime>14</warmupTime>
+      		  <spawnDef>UWC_Entrenchment</spawnDef>
+      		  <range>2.5</range>
+      		  <burstShotCount>1</burstShotCount>
+      		  <soundAiming>Interact_ConstructDirt</soundAiming>
+		      <aimingTargetEffecter>Effect_entrench</aimingTargetEffecter>
+      		  <soundCast>ChunkRock_Drop</soundCast>
+      		  <onlyManualCast>true</onlyManualCast>
+      		  <targetParams>
+      		    <canTargetLocations>true</canTargetLocations>
+      		  </targetParams>
+      		</li>
+
+	  	</verbs>
+
+		<comps>
+
+			<li Class="CompProperties_EquippableAbilityReloadable">
+      			<abilityDef>UWC_HVT</abilityDef>
+      			<maxCharges>3</maxCharges>
+      			<soundReload>Interact_AGL3</soundReload>
+      			<chargeNoun>combat cards</chargeNoun>
+      			<ammoDef>CombatCards_TI</ammoDef>
+      			<ammoCountPerCharge>1</ammoCountPerCharge>
+      			<baseReloadTicks>60</baseReloadTicks>
+      		</li>
+
+			<!--====MVCF====-->
+			<li Class="MVCF.Comps.CompProperties_VerbProps">
+				<compClass>MVCF.Comps.Comp_VerbProps</compClass>
+				<verbProps>
+
+
+			<li>
+				<label>HE grenade</label>
+				<canBeToggled>false</canBeToggled>
+				<separateToggle>true</separateToggle>
+				<description>Self guiding.</description>
+          		<comps>
+            		<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+            			<compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+            			<cooldownTime>30</cooldownTime>
+            		</li>
+            		<li Class="MVCF.Reloading.Comps.VerbCompProperties_Reloadable">
+            			<compClass>MVCF.Reloading.Comps.VerbComp_Reloadable</compClass>
+            			<AmmoFilter>
+            			<thingDefs>
+            				<li>CombatCards_TI</li>
+            			</thingDefs>
+            			</AmmoFilter>
+            			<ItemsPerShot>1</ItemsPerShot>
+            			<MaxShots>4</MaxShots>
+            			<ReloadSound>Interact_Grenade</ReloadSound>
+            			<ReloadTimePerShot>1</ReloadTimePerShot>
+            		</li>
+          		</comps>
+        	</li>
+
+			<li>
+				<label>Entrenchment</label>
+				<canBeToggled>false</canBeToggled>
+				<separateToggle>true</separateToggle>
+				<description>Build entrechments, costs nothing.</description>
+          		<comps>
+            		<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+            			<compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+            			<cooldownTime>2.5</cooldownTime>
+            		</li>
+          		</comps>
+        	</li>
+
+		</verbProps>
+		</li>
+
+		</comps>
+	</ThingDef>
+
+  <!-- ==== LMG ==== -->
+
+	<ThingDef ParentName="CaselessGunMMeleeBase">
+	  	<defName>UWCEI_AdvLMG_TI</defName>
+	  	<label>Adv. LMG</label>
+	  	<description>One of Orbital General Industries' most popular products due to it's weight saving ammunition, familiar open-bolt design and spacer alloy construction.\n\nUtilizes plasteel-lined barrels for heat resistance and durability, combat cards allow for a variety of special abilities.\n\nAbilities:
+    	-Base of fire; gunner's aura increases friendly fire rate, heavily decreases accuracy.\n\n
+    	-Entrench; improvise defenses.\n\n
+    	-Assistant gunner; choose a pawn to help with firing the weapon.</description>
+	  	<graphicData>
+	  		<texPath>CaselessBonus/UBX320</texPath>
+	  		<graphicClass>Graphic_Single</graphicClass>
+	  	</graphicData>
+	  	<soundInteract>Interact_CBox</soundInteract>
+	  	<recipeMaker>
+	  		<researchPrerequisites>
+              <li>MicroelectronicsBasics</li>
+              <li>PrecisionRifling</li>
+            </researchPrerequisites>
+	  		<skillRequirements>
+	  			<Crafting>6</Crafting>
+	  		</skillRequirements>
+	  	</recipeMaker>
+	  	<weaponTags>
+	  		<li>IndustrialGunAdvanced</li>
+	  		<li>ammo_caseless/200</li>
+            <li>UWC_Advanced</li>
+      	    <li>UWC_LMG</li>
+	  	</weaponTags>
+	  	<weaponClasses>
+	  		<li>RangedHeavy</li>
+	  	</weaponClasses>
+	  	<statBases>
+	  		<WorkToMake>42000</WorkToMake>
+	  		<Mass>6.5</Mass>
+	  		<AccuracyTouch>0.38</AccuracyTouch>
+	  		<AccuracyShort>0.45</AccuracyShort>
+	  		<AccuracyMedium>0.30</AccuracyMedium>
+	  		<AccuracyLong>0.23</AccuracyLong>
+	  		<RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>
+	  	</statBases>
+	    <costList>
+	    	<Steel>60</Steel>
+            <Plasteel>15</Plasteel>
+            <Chemfuel>25</Chemfuel>
+	    	<ComponentIndustrial>7</ComponentIndustrial>
+	    </costList>
+	  	<verbs>
+
+	  		<li>
+	  			<verbClass>Verb_Shoot</verbClass>
+	  			<hasStandardCommand>true</hasStandardCommand>
+	  			<defaultProjectile>Bullet_CBR</defaultProjectile>
+	  			<warmupTime>1.9</warmupTime>
+        		<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        		<burstShotCount>6</burstShotCount>
+	  			<range>28.9</range>
+	  			<soundCast>Shot_cbatrifle</soundCast>
+	  			<soundCastTail>GunTail_Heavy</soundCastTail>
+	  			<muzzleFlashScale>9</muzzleFlashScale>
+	  		</li>
+
+			<li>
+			  <label>Entrenchment</label>
+      		  <verbClass>Verb_Spawn</verbClass>
+      		  <hasStandardCommand>true</hasStandardCommand>
+      		  <warmupTime>14</warmupTime>
+      		  <spawnDef>UWC_Entrenchment</spawnDef>
+      		  <range>2.5</range>
+      		  <burstShotCount>1</burstShotCount>
+      		  <soundAiming>Interact_ConstructDirt</soundAiming>
+		      <aimingTargetEffecter>Effect_entrench</aimingTargetEffecter>
+      		  <soundCast>ChunkRock_Drop</soundCast>
+      		  <onlyManualCast>true</onlyManualCast>
+      		  <targetParams>
+      		    <canTargetLocations>true</canTargetLocations>
+      		  </targetParams>
+      		</li>
+
+			<li>
+			  <label>Assistant gunner</label>
+      		  <verbClass>Verb_LaunchProjectileStatic</verbClass>
+      		  <hasStandardCommand>true</hasStandardCommand>
+      		  <warmupTime>1</warmupTime>
+      		  <defaultProjectile>Bullet_AssistGun</defaultProjectile>
+        	  <minRange>0.5</minRange>
+      		  <range>1.9</range>
+			  <forcedMissRadius>0.5</forcedMissRadius>
+      		  <burstShotCount>1</burstShotCount>
+      		  <onlyManualCast>true</onlyManualCast>
+      		  <targetParams>
+      		    <canTargetLocations>true</canTargetLocations>
+      		  </targetParams>
+      		</li>
+
+	  	</verbs>
+
+		<comps>
+
+			<li Class="CompProperties_EquippableAbilityReloadable">
+      			<abilityDef>UWC_BaseOfFire</abilityDef>
+      			<maxCharges>3</maxCharges>
+      			<soundReload>Interact_AGL3</soundReload>
+      			<chargeNoun>combat cards</chargeNoun>
+      			<ammoDef>CombatCards_TI</ammoDef>
+      			<ammoCountPerCharge>1</ammoCountPerCharge>
+      			<baseReloadTicks>60</baseReloadTicks>
+      		</li>
+
+			<!--====MVCF====-->
+			<li Class="MVCF.Comps.CompProperties_VerbProps">
+				<compClass>MVCF.Comps.Comp_VerbProps</compClass>
+				<verbProps>
+
+			<li>
+				<label>Entrenchment</label>
+				<canBeToggled>false</canBeToggled>
+				<separateToggle>true</separateToggle>
+				<description>Build entrechments, free.</description>
+          		<comps>
+            		<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+            			<compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+            			<cooldownTime>2.5</cooldownTime>
+            		</li>
+          		</comps>
+        	</li>
+
+			<li>
+				<label>Assistant gunner</label>
+				<canBeToggled>false</canBeToggled>
+				<separateToggle>true</separateToggle>
+				<description>Choose an assistant gunner. Immobilizes the crew, so position wisely.</description>
+          		<comps>
+            		<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+            			<compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+            			<cooldownTime>45</cooldownTime>
+            		</li>
+					<li Class="MVCF.Reloading.Comps.VerbCompProperties_Reloadable">
+            			<compClass>MVCF.Reloading.Comps.VerbComp_Reloadable</compClass>
+            			<AmmoFilter>
+            			<thingDefs>
+            				<li>CombatCards_TI</li>
+            			</thingDefs>
+            			</AmmoFilter>
+            			<ItemsPerShot>1</ItemsPerShot>
+            			<MaxShots>5</MaxShots>
+            			<ReloadSound>Interact_Grenade</ReloadSound>
+            			<ReloadTimePerShot>1</ReloadTimePerShot>
+            		</li>
+          		</comps>
+        	</li>
+
+			</verbProps>
+			</li>
+
+		</comps>
+	</ThingDef>
+
+</Defs>

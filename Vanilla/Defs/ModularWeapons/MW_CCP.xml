@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+      
+        <ThingDef ParentName="BaseBullet" MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>Bullet_CCC</defName>
+          <label>pistol bullet</label>
+          <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>12</damageAmountBase>
+            <stoppingPower>0.5</stoppingPower>
+            <speed>55</speed>
+          </projectile>
+        </ThingDef>
+
+        <ThingDef ParentName="BaseBullet" MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>Bullet_CCCC</defName>
+          <label>charge pistol shot</label>
+          <graphicData>
+            <texPath>Things/Projectile/Charge_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>12</damageAmountBase> <!-- 4 -->
+            <armorPenetrationBase>0.35</armorPenetrationBase> <!-- 0.12 -->
+            <stoppingPower>1</stoppingPower>
+            <speed>60</speed>
+          </projectile>
+        </ThingDef>
+
+        <!-- Weapon -->
+
+        <ThingDef ParentName="BaseCaselessModularWeapon" MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>UWCEI_Modular_Caseless_Pistol</defName>
+          <label>caseless combat pistol</label>
+          <description>High-caliber caseless combat pistol. Conversion kits allow it to fire charge ammunition. Special variants made for corporate security and military features complete plaspoly construction. The civilian model is made from standard steel.</description>
+          <graphicData>
+          	<texPath>k10</texPath>
+          	<graphicClass>ModularWeapons.Graphic_Modular</graphicClass>
+          </graphicData>
+          <soundInteract>Interact_K10_Pistol</soundInteract>
+          <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+              <Crafting>5</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <weaponTags>
+            <li>SimpleGun</li>
+            <li>IndustrialGunAdvanced</li>
+            <li>SpacerGun</li>
+          	<li>ShortShots</li>
+          	<li>Autopistol</li>
+            <li>UWC_Simple</li>
+          </weaponTags>
+          <weaponClasses>
+            <li>RangedLight</li>
+          </weaponClasses>
+          <statBases>
+            <WorkToMake>6000</WorkToMake>
+            <Mass>0.93</Mass>
+            <AccuracyTouch>0.75</AccuracyTouch>
+            <AccuracyShort>0.7</AccuracyShort>
+            <AccuracyMedium>0.4</AccuracyMedium>
+            <AccuracyLong>0.3</AccuracyLong>
+            <RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
+          </statBases>
+          <comps>
+              <li Class="ModularWeapons.CompProperties_ModularParts">
+              	<compClass>ModularWeapons.CompModularParts</compClass>
+              	<partKinds>
+              		<li>K10_Frame</li>
+              		<li>K10_Slide</li>
+              		<li>K10_Mag</li>
+              		<li>K10_Optic</li>
+              		<li>K10_Muzzle</li>
+              		<li>K10_Fore</li>
+              	</partKinds>
+              	<majorKinds>
+              		<li>K10_Frame</li>
+              		<li>K10_Slide</li>
+              		<li>K10_Mag</li>
+              	</majorKinds>
+              	<defaultParts>
+              		<li>K10_Frame_Standard</li>
+              		<li>K10_Slide_Standard</li>
+              		<li>K10_Magazine_Standard</li>
+              	</defaultParts>
+              </li>
+          </comps>
+          <costList>
+            <Chemfuel>20</Chemfuel>
+            <Steel>5</Steel>
+            <ComponentIndustrial>3</ComponentIndustrial>
+          </costList>
+          <verbs>
+            <li>
+              <verbClass>Verb_Shoot</verbClass>
+              <hasStandardCommand>true</hasStandardCommand>
+              <defaultProjectile>Bullet_CCC</defaultProjectile>
+              <warmupTime>0.4</warmupTime>
+              <range>21.9</range>
+              <soundCast>Fire_K10_Pistol</soundCast>
+              <soundCastTail>GunTail_Light</soundCastTail>
+              <muzzleFlashScale>11</muzzleFlashScale>
+              <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+            </li>
+          </verbs>
+          <tools>
+            <li>
+              <label>grip</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>9</power>
+              <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+              <label>barrel</label>
+              <capacities>
+                <li>Blunt</li>
+                <li>Poke</li>
+              </capacities>
+              <power>9</power>
+              <cooldownTime>2</cooldownTime>
+            </li>
+          </tools>
+        </ThingDef>
+
+        <!-- =================================== Parts -->
+    
+        <!-- ================ Slide -->
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Slide_Standard</defName>
+          <label>Standard slide</label>
+          <description>Standard steel slide.</description>
+          <kind>K10_Slide</kind>
+          <path>Slide_Standard</path>
+          <!--=====-->
+          <!--=====-->
+          <costList>
+            <Chemfuel>5</Chemfuel>
+            <Steel>10</Steel>
+          </costList>
+          <incompatibleParts>
+            <li>K10_Magazine_Charge</li>
+            <li>K10_Magazine_Charge_Ext</li>
+            <!-- incomp Muzzle devices -->
+            <li>K10_Muzzle_Chg_Ext</li>
+            <li>K10_Muzzle_Charge_Comp</li>
+            <li>K10_Muzzle_Chg_Suppressor</li>
+          </incompatibleParts>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Slide_Plaspoly</defName>
+          <label>Plaspoly slide</label>
+          <description>Ultra-lightweight plaspoly slide with recoil reduction mechanism and match-grade barrel.</description>
+          <kind>K10_Slide</kind>
+          <path>Slide_Popl</path>
+          <!--=====-->
+	        <massFactor>-0.21</massFactor>
+            <AccTouchFactor>0.01</AccTouchFactor>
+            <AccShortFactor>0.01</AccShortFactor>
+            <AccMediumFactor>0.02</AccMediumFactor>
+            <AccLongFactor>0.01</AccLongFactor>
+            <warmupTimeFactor>-0.05</warmupTimeFactor>
+            <cooldownFactor>-0.05</cooldownFactor>
+            <rangeFactor>2</rangeFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>10</Steel>
+            <Chemfuel>10</Chemfuel>
+            <Plasteel>10</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+          </costList>
+	      <researchPrerequisites>
+            <li>MicroelectronicsBasics</li>
+          </researchPrerequisites>
+          <incompatibleParts>
+            <li>K10_Frame_Charge</li>
+            <li>K10_Magazine_Charge</li>
+            <li>K10_Magazine_Charge_Ext</li>
+            <!-- incomp Muzzle devices -->
+            <li>K10_Muzzle_Chg_Ext</li>
+            <li>K10_Muzzle_Charge_Comp</li>
+            <li>K10_Muzzle_Chg_Suppressor</li>
+          </incompatibleParts>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Slide_Charge</defName>
+          <label>Charge slide</label>
+          <description>Cycles the action and imbues the projectile with unstable energy.</description>
+          <kind>K10_Slide</kind>
+          <path>Slide_Charge</path>
+          <!--=====-->
+	        <massFactor>-0.1</massFactor>
+            <warmupTimeFactor>-0.1</warmupTimeFactor>
+            <cooldownFactor>-0.1</cooldownFactor>
+            <rangeFactor>-2</rangeFactor>
+          <!--=====-->
+          <costList>
+            <Chemfuel>15</Chemfuel>
+            <Plasteel>20</Plasteel>
+		    <ComponentSpacer>1</ComponentSpacer>
+          </costList>
+	        <researchPrerequisites>
+            <li>Fabrication</li>
+          </researchPrerequisites>
+          <incompatibleParts>
+            <li>K10_Frame_Plaspoly</li>
+            <!-- incomp ammo types -->
+            <li>K10_Magazine_Standard</li>
+            <li>K10_Magazine_Extended</li>
+            <li MayRequire="Ludeon.RimWorld.Anomaly">K10_Magazine_BFT</li>
+            <!-- incomp Muzzle devices -->
+            <li>K10_Muzzle_Ext</li>
+            <li>K10_Muzzle_Comp</li>
+            <li>K10_Muzzle_Suppressor</li>
+          </incompatibleParts>
+          <incompatibleKind>
+            <li>K10_Fore</li>
+          </incompatibleKind>
+        </ModularWeapons.ModularPartDef>
+    
+        <!-- ================ Frame -->
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Frame_Standard</defName>
+          <label>Standard frame</label>
+          <description>Standard steel frame.</description>
+          <kind>K10_Frame</kind>
+          <path>Frame_Standard</path>
+          <!--=====-->
+          <!--=====-->
+          <costList>
+            <Chemfuel>10</Chemfuel>
+            <Steel>15</Steel>
+          </costList>
+          <incompatibleParts>
+            <li>K10_Slide_Plaspoly</li>
+            <li>K10_Magazine_Charge</li>
+            <li>K10_Magazine_Charge_Ext</li>
+          </incompatibleParts>
+        </ModularWeapons.ModularPartDef>
+    
+	      <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Frame_Plaspoly</defName>
+          <label>Plaspoly frame</label>
+          <description>Ultra-lightweight plaspoly frame.</description>
+          <kind>K10_Frame</kind>
+          <path>Frame_Popl</path>
+          <!--=====-->
+	        <massFactor>-0.21</massFactor>
+            <AccTouchFactor>0.01</AccTouchFactor>
+            <AccShortFactor>0.01</AccShortFactor>
+            <AccMediumFactor>0.02</AccMediumFactor>
+            <AccLongFactor>0.03</AccLongFactor>
+            <cooldownFactor>-0.05</cooldownFactor>
+            <rangeFactor>2</rangeFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>10</Steel>
+            <Chemfuel>10</Chemfuel>
+            <Plasteel>10</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+          </costList>
+	        <researchPrerequisites>
+            <li>MicroelectronicsBasics</li>
+          </researchPrerequisites>
+          <incompatibleParts>
+            <li>K10_Slide_Standard</li>
+            <li>K10_Slide_Charge</li>
+          </incompatibleParts>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Frame_Charge</defName>
+          <label>Charge frame</label>
+          <description>Heavier charge frame with energy components.</description>
+          <kind>K10_Frame</kind>
+          <path>Frame_Charge</path>
+          <!--=====-->
+	        <massFactor>0.1</massFactor>
+            <AccTouchFactor>0.02</AccTouchFactor>
+            <AccShortFactor>0.02</AccShortFactor>
+            <AccMediumFactor>0.03</AccMediumFactor>
+            <AccLongFactor>0.02</AccLongFactor>
+          <!--=====-->
+          <costList>
+            <Chemfuel>10</Chemfuel>
+            <Plasteel>10</Plasteel>
+          </costList>
+	        <researchPrerequisites>
+            <li>Fabrication</li>
+          </researchPrerequisites>
+          <incompatibleParts>
+            <li>K10_Slide_Standard</li>
+            <li>K10_Slide_Plaspoly</li>
+            <!-- incomp ammo types -->
+            <li>K10_Magazine_Standard</li>
+            <li>K10_Magazine_Extended</li>
+            <li MayRequire="Ludeon.RimWorld.Anomaly">K10_Magazine_BFT</li>
+          </incompatibleParts>
+          <incompatibleKind>
+            <li>K10_Fore</li>
+          </incompatibleKind>
+        </ModularWeapons.ModularPartDef>
+    
+        <!-- ================ Mag -->
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Magazine_Standard</defName>
+          <label>Standard magazine</label>
+          <description>Standard magazine.</description>
+          <kind>K10_Mag</kind>
+          <path>Mag_18</path>
+          <!--=====-->
+          <!--=====-->
+          <costList>
+            <Chemfuel>5</Chemfuel>
+            <Steel>10</Steel>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Magazine_Extended</defName>
+          <label>Extended magazine</label>
+          <description>Adds an additional shot per burst.</description>
+          <kind>K10_Mag</kind>
+          <path>Mag_24</path>
+          <!--=====-->
+          <burstCountFactor>1</burstCountFactor>
+          <!--=====-->
+          <costList>
+            <Chemfuel>10</Chemfuel>
+            <Steel>15</Steel>   
+		    <ComponentIndustrial>1</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Magazine_Charge</defName>
+          <label>Standard charge magazine</label>
+          <description>Weak energy projectile that charges with unstable energy through the slide's coils.</description>
+          <kind>K10_Mag</kind>
+          <path>Mag_Chg_18</path>
+          <!--=====-->
+            <projectileFactor>Bullet_CCCC</projectileFactor>
+          <!--=====-->
+          <costList>
+            <Chemfuel>5</Chemfuel>
+            <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>3</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Magazine_Charge_Ext</defName>
+          <label>Extended charge magazine</label>
+          <description>Weak projectile that charges with unstable energy through the slide's coils.\n\nFires an additional projectile per-shot.</description>
+          <kind>K10_Mag</kind>
+          <path>Mag_Chg_24</path>
+          <!--=====-->
+            <projectileFactor>Bullet_CCCC</projectileFactor>
+            <burstCountFactor>1</burstCountFactor>
+          <!--=====-->
+          <costList>
+            <Chemfuel>8</Chemfuel>
+            <Plasteel>8</Plasteel>
+		    <ComponentIndustrial>3</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <!-- ================ Optics -->
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Optic_Reddot</defName>
+          <label>Red-dot sight</label>
+          <description>CQB sight that allows for quick aiming.</description>
+          <kind>K10_Optic</kind>
+          <path>Optic_Reddot</path>
+          <!--=====-->
+          <massFactor>0.2</massFactor>
+          <AccTouchFactor>0.03</AccTouchFactor>
+          <AccShortFactor>0.02</AccShortFactor>
+          <AccMediumFactor>0.01</AccMediumFactor>
+          <warmupTimeFactor>-0.05</warmupTimeFactor>
+          <!--=====-->
+          <costList>
+            <Steel>5</Steel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Optic_Scope</defName>
+          <label>Pistol scope</label>
+          <description>Pistol scope, reduces rate-of-fire but increases range and accuracy.</description>
+          <kind>K10_Optic</kind>
+          <path>Optic_Scope</path>
+          <!--=====-->
+          <massFactor>0.5</massFactor>
+          <AccTouchFactor>0.02</AccTouchFactor>
+          <AccShortFactor>0.06</AccShortFactor>
+          <AccMediumFactor>0.09</AccMediumFactor>
+          <AccLongFactor>0.07</AccLongFactor>
+          <warmupTimeFactor>0.1</warmupTimeFactor>
+          <cooldownFactor>0.1</cooldownFactor>
+          <rangeFactor>3</rangeFactor>
+          <!--=====-->
+          <costList>
+            <Plasteel>5</Plasteel>
+            <Chemfuel>10</Chemfuel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Optic_Smartdot</defName>
+          <label>Smartdot</label>
+          <description>Special optic with aim assistance.</description>
+          <kind>K10_Optic</kind>
+          <path>Optic_Smartdot</path>
+          <!--=====-->
+          <massFactor>0.15</massFactor>
+          <AccTouchFactor>0.04</AccTouchFactor>
+          <AccShortFactor>0.03</AccShortFactor>
+          <AccMediumFactor>0.02</AccMediumFactor>
+          <warmupTimeFactor>-0.1</warmupTimeFactor>
+          <!--=====-->
+          <costList>
+            <Plasteel>5</Plasteel>
+            <ComponentIndustrial>5</ComponentIndustrial>
+          </costList>
+          <researchPrerequisites>
+            <li>Fabrication</li>
+          </researchPrerequisites>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Optic_SmartScope</defName>
+          <label>Smart holo</label>
+          <description>Special optic with aim assistance.</description>
+          <kind>K10_Optic</kind>
+          <path>Optic_Smartscope</path>
+          <!--=====-->
+          <massFactor>0.4</massFactor>
+          <AccTouchFactor>0.03</AccTouchFactor>
+          <AccShortFactor>0.07</AccShortFactor>
+          <AccMediumFactor>0.1</AccMediumFactor>
+          <AccLongFactor>0.08</AccLongFactor>
+          <warmupTimeFactor>0.05</warmupTimeFactor>
+          <cooldownFactor>0.05</cooldownFactor>
+          <rangeFactor>3</rangeFactor>
+          <!--=====-->
+          <costList>
+            <Plasteel>10</Plasteel>
+            <ComponentIndustrial>10</ComponentIndustrial>
+          </costList>
+          <researchPrerequisites>
+            <li>Fabrication</li>
+          </researchPrerequisites>
+        </ModularWeapons.ModularPartDef>
+    
+	      <!-- ================ Muzzle -->
+
+	      <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Muzzle_Ext</defName>
+          <label>Ext barrel</label>
+          <description>Barrel extension.</description>
+          <kind>K10_Muzzle</kind>
+          <path>Muzzle_Ext</path>
+          <!--=====-->
+          <massFactor>0.6</massFactor>
+          <AccTouchFactor>0.01</AccTouchFactor>
+          <AccShortFactor>0.04</AccShortFactor>
+          <AccMediumFactor>0.07</AccMediumFactor>
+          <AccLongFactor>0.06</AccLongFactor>
+          <rangeFactor>3</rangeFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>8</Steel>
+            <Plasteel>3</Plasteel>
+		    <ComponentIndustrial>1</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Muzzle_Comp</defName>
+          <label>Compensator</label>
+          <description>Reduces recoil and aim time.</description>
+          <kind>K10_Muzzle</kind>
+          <path>Muzzle_Comp</path>
+          <!--=====-->
+          <massFactor>0.05</massFactor>
+          <AccTouchFactor>0.04</AccTouchFactor>
+          <AccShortFactor>0.03</AccShortFactor>
+          <AccMediumFactor>0.02</AccMediumFactor>
+          <cooldownFactor>-0.1</cooldownFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>5</Steel>
+            <Plasteel>3</Plasteel>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Muzzle_Suppressor</defName>
+          <label>Suppressor</label>
+          <description>Reduces report and recoil.</description>
+          <kind>K10_Muzzle</kind>
+          <path>Muzzle_Suppressor</path>
+          <!--=====-->
+          <IncomingDamageFactor>-0.12</IncomingDamageFactor>
+	        <massFactor>0.09</massFactor>
+          <HuntingStealthFactor>0.45</HuntingStealthFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>10</Steel>
+            <Chemfuel>15</Chemfuel>
+		    <ComponentIndustrial>1</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Muzzle_Chg_Ext</defName>
+          <label>Charge extended barrel</label>
+          <description>Extended charge coils, unmatched range and accuracy.</description>
+          <kind>K10_Muzzle</kind>
+          <path>Muzzle_Chg_Ext</path>
+          <!--=====-->
+          <massFactor>0.4</massFactor>
+          <AccTouchFactor>0.02</AccTouchFactor>
+          <AccShortFactor>0.05</AccShortFactor>
+          <AccMediumFactor>0.08</AccMediumFactor>
+          <AccLongFactor>0.07</AccLongFactor>
+          <rangeFactor>5</rangeFactor>
+          <!--=====-->
+          <costList>
+	      	<Chemfuel>5</Chemfuel>
+            <Plasteel>3</Plasteel>
+		    <ComponentIndustrial>3</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Muzzle_Charge_Comp</defName>
+          <label>Charge compensator</label>
+          <description>Lighter plasteel compensator.</description>
+          <kind>K10_Muzzle</kind>
+          <path>Muzzle_Chg_Comp</path>
+          <!--=====-->
+          <massFactor>0.04</massFactor>
+          <AccTouchFactor>0.05</AccTouchFactor>
+          <AccShortFactor>0.04</AccShortFactor>
+          <AccMediumFactor>0.03</AccMediumFactor>
+          <cooldownFactor>-0.15</cooldownFactor>
+          <!--=====-->
+          <costList>
+            <Plasteel>4</Plasteel>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Muzzle_Chg_Suppressor</defName>
+          <label>Charge suppressor</label>
+          <description>Reduces report and recoil. Requires special engineering to not explode when manipulating charged energy.</description>
+          <kind>K10_Muzzle</kind>
+          <path>Muzzle_Chg_Suppressor</path>
+          <!--=====-->
+          <IncomingDamageFactor>-0.16</IncomingDamageFactor>
+	      <massFactor>0.07</massFactor>
+          <HuntingStealthFactor>0.55</HuntingStealthFactor>
+          <!--=====-->
+          <costList>
+	      	<Plasteel>5</Plasteel>
+            <Chemfuel>10</Chemfuel>
+		    <ComponentIndustrial>3</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+	      <!-- ================ Fore -->
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Fore_Flashlight</defName>
+          <label>Flashlight</label>
+          <description>Fore-mounted flashlight.</description>
+          <kind>K10_Fore</kind>
+          <path>UB_Flash</path>
+          <!--=====-->
+          <massFactor>0.07</massFactor>
+          <flashlightFactor>true</flashlightFactor>
+          <HuntingStealthFactor>-0.3</HuntingStealthFactor>
+          <!--=====-->
+          <costList>
+            <Chemfuel>5</Chemfuel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+            <Steel>5</Steel>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Fore_Laser</defName>
+          <label>Laser sight</label>
+          <description>All-range increase in accuracy.</description>
+          <kind>K10_Fore</kind>
+          <path>UB_Laser</path>
+          <!--=====-->
+	      <massFactor>0.05</massFactor>
+	      <cooldownFactor>-0.05</cooldownFactor>
+          <AccTouchFactor>0.02</AccTouchFactor>
+          <AccShortFactor>0.02</AccShortFactor>
+          <AccMediumFactor>0.02</AccMediumFactor>
+          <AccLongFactor>0.02</AccLongFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>5</Steel>
+            <Chemfuel>5</Chemfuel>
+		    <ComponentIndustrial>1</ComponentIndustrial>
+          </costList>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Fore_Lightbox</defName>
+          <label>Lightbox</label>
+          <description>Tactical lightbox, increases accuracy and illuminates targets.</description>
+          <kind>K10_Fore</kind>
+          <path>UB_Lightbox</path>
+          <!--=====-->
+	      <massFactor>0.12</massFactor>
+          <flashlightFactor>true</flashlightFactor>
+          <HuntingStealthFactor>-0.3</HuntingStealthFactor>
+	      <cooldownFactor>-0.05</cooldownFactor>
+          <AccTouchFactor>0.02</AccTouchFactor>
+          <AccShortFactor>0.02</AccShortFactor>
+          <AccMediumFactor>0.02</AccMediumFactor>
+          <AccLongFactor>0.02</AccLongFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>10</Steel>
+            <Chemfuel>10</Chemfuel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+          </costList>
+          <researchPrerequisites>
+            <li>MicroelectronicsBasics</li>
+          </researchPrerequisites>
+        </ModularWeapons.ModularPartDef>
+    
+        <ModularWeapons.ModularPartDef MayRequire="kaitorisenkou.ModularWeapons">
+          <defName>K10_Fore_Rayfinder</defName>
+          <label>Rayfinder</label>
+          <description>Aim assistance and targeting module for medium-range combat.</description>
+          <kind>K10_Fore</kind>
+          <path>UB_Rayfinder</path>
+          <!--=====-->
+	      <massFactor>0.17</massFactor>
+	      <cooldownFactor>-0.1</cooldownFactor>
+          <warmupTimeFactor>-0.1</warmupTimeFactor>
+          <AccTouchFactor>0.06</AccTouchFactor>
+          <AccShortFactor>0.09</AccShortFactor>
+          <AccMediumFactor>0.12</AccMediumFactor>
+          <AccLongFactor>0.08</AccLongFactor>
+          <!--=====-->
+          <costList>
+	      	<Steel>10</Steel>
+            <Plasteel>10</Plasteel>
+		    <ComponentIndustrial>4</ComponentIndustrial>
+          </costList>
+	        <researchPrerequisites>
+            <li>MultiAnalyzer</li>
+          </researchPrerequisites>
+        </ModularWeapons.ModularPartDef>
+
+</Defs>

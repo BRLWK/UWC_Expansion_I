@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- Assistant gunner hediff giver  -->
+
+    <DamageDef>
+      <defName>AG_driver</defName>
+      <label>Gun team</label>
+      <workerClass>DamageWorker_Extinguish</workerClass>
+      <harmsHealth>false</harmsHealth>
+      <makesBlood>false</makesBlood>
+      <defaultDamage>999999</defaultDamage>
+      <explosionCellFleck>UWCEI_BlastDummy</explosionCellFleck>
+      <soundExplosion>UWCEI_Explosion_Dummy</soundExplosion>
+      <combatLogRules>Damage_Smoke</combatLogRules>
+      <hediff>UWC_AG_Hediff</hediff>
+    </DamageDef>
+
+    <ThingDef ParentName="BaseBullet">
+      <defName>Bullet_AssistGun</defName>
+      <label>Gun team</label>
+      <graphicData>
+        <texPath>UWCEI_Dummy</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+      </graphicData>
+      <thingClass>Projectile_Explosive</thingClass>
+      <projectile>
+        <damageDef>AG_driver</damageDef>
+        <damageAmountBase>1</damageAmountBase>
+        <explosionRadius>0.5</explosionRadius>
+        <speed>50</speed>
+        <flyOverhead>true</flyOverhead>
+        <screenShakeFactor>0</screenShakeFactor>
+      </projectile>
+    </ThingDef>
+
+</Defs>

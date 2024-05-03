@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- ========== Disrupting Grenade ========== -->
+
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>Bullet_Guided_DisruptGrenade</defName>
+        <label>Disrupt grenade</label>
+        <graphicData>
+          <texPath>Resource/DisruptNade</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <thingClass>Projectile_Explosive</thingClass>
+        <projectile>
+            <speed>35</speed>
+            <damageDef>Smoke</damageDef>
+            <spinRate>2</spinRate>
+            <arcHeightFactor>0</arcHeightFactor>
+            <explosionRadius>0.5</explosionRadius>
+            <explosionRadiusDisplayPadding>5</explosionRadiusDisplayPadding>
+            <postExplosionGasType>BlindSmoke</postExplosionGasType>
+            <soundExplode>ToxicShellLanded</soundExplode>
+            <postExplosionSpawnThingDef>SAGL3_Grenade_Disrupt</postExplosionSpawnThingDef>
+        </projectile>
+        <comps>
+    	  	<li Class="VFECore.CompProperties_HomingProjectile">
+    	  		<homingDistanceFractionPassed>0.25</homingDistanceFractionPassed>
+    	  		<homingCorrectionTickRate>1</homingCorrectionTickRate>
+    	  		<initialDispersionFromTarget>1</initialDispersionFromTarget>
+    	  		<!--hitSound>RM_Hit_Needler</hitSound-->
+    	  	</li>
+    	  </comps>
+    </ThingDef>
+
+    <!-- AOE thingdef -->
+
+    <ThingDef>
+      <label>disrupting grenade</label>
+      <defName>SAGL3_Grenade_Disrupt</defName>
+      <graphicData>
+        <texPath>Resource/DisruptNade</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <onGroundRandomRotateAngle>360</onGroundRandomRotateAngle>
+      </graphicData>
+      <selectable>false</selectable>
+      <tickerType>Normal</tickerType>
+      <thingClass>ThingWithComps</thingClass>
+      <useHitPoints>false</useHitPoints>
+      <rotatable>false</rotatable>
+      <comps>
+          <li Class="CompProperties_CauseHediff_AoE">
+            <range>5.9</range>
+            <canTargetSelf>false</canTargetSelf>
+            <drawLines>false</drawLines>
+            <hediff>SAGL3_Hdf_Disrupt</hediff>
+          </li>
+          <li Class="CompProperties_DestroyAfterDelay">
+              <delayTicks>3,750</delayTicks><!-- 1.5 hr -->
+              <displayCountdownOnLabel>true</displayCountdownOnLabel>
+          </li>
+          <li Class="CompProperties_Glower">
+            <glowRadius>10</glowRadius>
+            <glowColor>(255,117,108,0)</glowColor>
+          </li>
+          <li Class="CompProperties_Effecter">
+            <effecterDef>Disrupt_Radius_Effecter</effecterDef>
+          </li>
+          <li Class="CompProperties_ReleaseGas">
+            <gasType>BlindSmoke</gasType>
+            <cellsToFill>35</cellsToFill>
+            <durationSeconds>9</durationSeconds>
+            <effecterReleasing>DisruptGasReleasing</effecterReleasing>
+          </li>
+      </comps>
+    </ThingDef>
+
+    <!-- Spotting aura driver -->
+
+    <DamageDef>
+      <defName>DD_SpotDriver</defName>
+      <label>spotting munition</label>
+      <workerClass>DamageWorker_Extinguish</workerClass>
+      <harmsHealth>false</harmsHealth>
+      <makesBlood>false</makesBlood>
+      <defaultDamage>999999</defaultDamage>
+      <explosionCellFleck>UWCEI_BlastDummy</explosionCellFleck>
+      <soundExplosion>UWCEI_Explosion_Dummy</soundExplosion>
+      <combatLogRules>Damage_Smoke</combatLogRules>
+      <hediff>SAGL3_Hdf_SpotDriver</hediff>
+    </DamageDef>
+
+    <ThingDef ParentName="BaseBullet">
+      <defName>Bullet_SpotDriver</defName>
+      <label>spotting munition</label>
+      <graphicData>
+        <texPath>UWCEI_Dummy</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+      </graphicData>
+      <thingClass>Projectile_Explosive</thingClass>
+      <projectile>
+        <damageDef>DD_SpotDriver</damageDef>
+        <damageAmountBase>1</damageAmountBase>
+        <explosionRadius>1.5</explosionRadius>
+        <explosionRadiusDisplayPadding>1</explosionRadiusDisplayPadding>
+        <speed>50</speed>
+        <flyOverhead>true</flyOverhead>
+        <screenShakeFactor>0</screenShakeFactor>
+      </projectile>
+      <comps>
+    		<li Class="VFECore.CompProperties_HomingProjectile">
+    			<homingDistanceFractionPassed>0.25</homingDistanceFractionPassed>
+    			<homingCorrectionTickRate>1</homingCorrectionTickRate>
+    			<initialDispersionFromTarget>1</initialDispersionFromTarget>
+    			<!--hitSound>RM_Hit_Needler</hitSound-->
+    		</li>
+    	</comps>
+    </ThingDef>
+
+</Defs>

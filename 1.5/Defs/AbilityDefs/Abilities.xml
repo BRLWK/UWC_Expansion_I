@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- Tier 1 -->
+
+    <AbilityDef>
+        <defName>UWC_Gunlink</defName>
+        <label>gunlink</label>
+        <description>The caster experiences reduced aiming time, stagger and increased movement speed for a short time.</description>
+        <iconPath>UI/assault</iconPath>
+        <jobDef>CastAbilityOnThing</jobDef>
+        <targetRequired>False</targetRequired>
+        <canUseAoeToGetTargets>False</canUseAoeToGetTargets>
+        <stunTargetWhileCasting>False</stunTargetWhileCasting>
+        <showPsycastEffects>False</showPsycastEffects>
+        <displayOrder>1</displayOrder>
+        <sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+        <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
+        <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+        <hotKey>Misc3</hotKey>
+        <warmupStartSound>CombatCommand_Warmup</warmupStartSound>
+        <statBases>
+            <Ability_Duration>40</Ability_Duration>
+            <Ability_EffectRadius>0</Ability_EffectRadius>
+        </statBases>
+        <verbProperties>
+            <verbClass>Verb_CastAbility</verbClass>
+            <warmupTime>0.5</warmupTime>
+            <range>0</range>
+            <drawAimPie>False</drawAimPie>
+            <requireLineOfSight>False</requireLineOfSight>
+            <targetParams>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetAnimals>false</canTargetAnimals>
+                <canTargetHumans>false</canTargetHumans>
+                <canTargetMechs>false</canTargetMechs>
+            </targetParams>
+        </verbProperties>
+        <comps>
+          <li Class="CompProperties_AbilityGiveHediff">
+            <compClass>CompAbilityEffect_GiveHediff</compClass>
+            <hediffDef>UWC_Gunlink</hediffDef>
+            <onlyApplyToSelf>True</onlyApplyToSelf>
+            <replaceExisting>true</replaceExisting>
+          </li>
+        </comps>
+    </AbilityDef>
+
+    <AbilityDef>
+        <defName>UWC_HVT</defName>
+        <label>high-value target</label>
+        <description>Designating a single target as high-value using this weapon's combat computer. Fires a single armor-piercing incendiary bullet, dealing heavy damage and setting the target ablaze.</description>
+        <iconPath>UI/assault</iconPath>
+        <writeCombatLog>True</writeCombatLog>
+        <showPsycastEffects>False</showPsycastEffects>
+        <displayOrder>1</displayOrder>
+        <hotKey>Misc3</hotKey>
+        <aiCanUse>true</aiCanUse>
+        <verbProperties>
+            <verbClass>Verb_CastAbility</verbClass>
+            <range>46.9</range>
+            <warmupTime>2.5</warmupTime> 
+            <muzzleFlashScale>14</muzzleFlashScale>
+            <defaultCooldownTime>6</defaultCooldownTime>
+            <soundCast>Shot_CBR_Heavy</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <accuracyTouch>1</accuracyTouch>
+            <accuracyShort>1</accuracyShort>
+            <accuracyMedium>10</accuracyMedium>
+            <accuracyLong>1</accuracyLong>
+            <canGoWild>false</canGoWild>
+        </verbProperties>
+        <comps>
+            <li Class="CompProperties_AbilityLaunchProjectile">
+              <projectileDef>Bullet_API_BRifle</projectileDef>
+            </li>
+        </comps>
+    </AbilityDef>
+
+    <AbilityDef>
+        <defName>UWC_BaseOfFire</defName>
+        <label>base of fire</label>
+        <description>The gunner increases the volume of fire by nearby friendlies, but accuracy suffers as a result.</description>
+        <iconPath>UI/assault</iconPath>
+        <jobDef>CastAbilityOnThing</jobDef>
+        <targetRequired>False</targetRequired>
+        <canUseAoeToGetTargets>False</canUseAoeToGetTargets>
+        <stunTargetWhileCasting>False</stunTargetWhileCasting>
+        <showPsycastEffects>False</showPsycastEffects>
+        <displayOrder>1</displayOrder>
+        <sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+        <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
+        <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+        <hotKey>Misc3</hotKey>
+        <warmupStartSound>CombatCommand_Warmup</warmupStartSound>
+        <statBases>
+            <Ability_Duration>30</Ability_Duration>
+            <Ability_EffectRadius>0</Ability_EffectRadius>
+        </statBases>
+        <verbProperties>
+            <verbClass>Verb_CastAbility</verbClass>
+            <warmupTime>0.5</warmupTime>
+            <range>0</range>
+            <drawAimPie>False</drawAimPie>
+            <requireLineOfSight>False</requireLineOfSight>
+            <targetParams>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetAnimals>false</canTargetAnimals>
+                <canTargetHumans>false</canTargetHumans>
+                <canTargetMechs>false</canTargetMechs>
+            </targetParams>
+        </verbProperties>
+        <comps>
+          <li Class="CompProperties_AbilityGiveHediff">
+            <compClass>CompAbilityEffect_GiveHediff</compClass>
+            <hediffDef>UWC_BoFHediff</hediffDef>
+            <onlyApplyToSelf>True</onlyApplyToSelf>
+            <replaceExisting>true</replaceExisting>
+          </li>
+        </comps>
+    </AbilityDef>
+
+</Defs>

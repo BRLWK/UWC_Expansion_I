@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Placeholder from "suppression" mod. -->
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_UnderEffect</defName>
+    <description>TODO</description>
+    <graphicData>
+      <texPath>Things/Mote/SparkFlash</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <thingClass>MoteThrownAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.1</solidTime>
+      <fadeOutTime>0.15</fadeOutTime>
+      <attachedDrawOffset>(0.0, 0, 0.8)</attachedDrawOffset>
+    </mote>
+  </ThingDef>
+
+  <EffecterDef>
+    <defName>UnderEffect</defName>
+    <description>a</description>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_DrifterEmoteChance</subEffecterClass>
+        <scale>
+          <!-- Scale is larger to show 'spark' effects. Reduce confusing with 'shiny' or 'magic' -->
+          <min>0</min>
+          <max>1</max>
+        </scale>
+        <chancePerTick>0.05</chancePerTick>
+        <positionRadius>0.2</positionRadius>
+        <moteDef>Mote_UnderEffect</moteDef>
+        <speed>
+          <min>0.0</min>
+          <max>0.0</max>
+        </speed>
+        <angle>
+          <min>-80</min>
+          <max>80</max>
+        </angle>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <!-- placeholder from nuclear twilight -->
+
+  <EffecterDef>
+    <defName>Disrupt_Radius_Effecter</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <fleckDef>Disrupt_Radius_Fleck</fleckDef>
+        <spawnLocType>OnSource</spawnLocType>
+        <scale>10.5</scale>
+        <useTargetAInitialRotation>true</useTargetAInitialRotation>
+        <rotation>0</rotation>
+        <ticksBetweenMotes>480</ticksBetweenMotes>
+        <angle>0</angle>
+      </li>
+    </children>
+  </EffecterDef>
+
+<!-- temporary MG position -->
+
+  <EffecterDef>
+    <defName>MGP_Radius_Effecter</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
+        <fleckDef>MGP_Radius_Fleck</fleckDef>
+        <spawnLocType>OnSource</spawnLocType>
+        <scale>0.75</scale>
+        <useTargetAInitialRotation>true</useTargetAInitialRotation>
+        <rotation>5</rotation>
+        <ticksBetweenMotes>480</ticksBetweenMotes>
+        <angle>0</angle>
+      </li>
+    </children>
+  </EffecterDef>
+
+
+  <!-- Disruption grenade -->
+  <!-- purple smoke-->
+  <EffecterDef>
+    <defName>DisruptGasReleasing</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
+        <soundDef>GasReleasing</soundDef>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0.3</positionRadius>
+        <fleckDef>Fleck_DisruptGasSource</fleckDef>
+        <chancePerTick>0.4</chancePerTick>
+        <scale>0.8~1.4</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <rotation>10~360</rotation>
+        <rotationRate>8</rotationRate>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>5</positionRadius>
+        <fleckDef>Fleck_DisruptGasSpread</fleckDef>
+        <spawnLocType>OnSource</spawnLocType>
+        <chancePerTick>0.75</chancePerTick>
+        <scale>1.0~1.6</scale>
+        <positionOffset>(0,0.2,1)</positionOffset>
+        <speed>0.1~1.5</speed>
+        <rotation>10~360</rotation>
+        <rotationRate>5</rotationRate>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <!-- ThemalTarget warmup -->
+
+  <EffecterDef>
+    <defName>ThermalTarget_Warmup</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SoundTriggered</subEffecterClass>
+        <spawnLocType>OnSource</spawnLocType>
+        <soundDef>Interact_AGL3</soundDef>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>Mote_ThermalTargetWarmup</moteDef>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <!-- effect entrenching -->
+  
+  <EffecterDef>
+    <defName>Effect_entrench</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_InteractSymbol</subEffecterClass>
+        <moteDef>Mote_Entrench</moteDef>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>DustPuff</fleckDef>
+        <chancePerTick>0.035</chancePerTick>
+        <scale>0.9~1.2</scale>
+        <rotationRate>-60~60</rotationRate>
+        <speed>0.6~1.8</speed>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>DirtBits</fleckDef>
+        <spawnLocType>BetweenPositions</spawnLocType>
+        <chancePerTick>0.05</chancePerTick>
+        <scale>0.5~0.6</scale>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <angle>0~360</angle>
+        <speed>5</speed>
+      </li>
+    </children>
+  </EffecterDef>
+
+
+
+</Defs>

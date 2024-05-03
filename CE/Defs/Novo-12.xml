@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- =================================== Weapon -->
+
+  <ThingDef ParentName="UWCEI_Base_Gun">
+    <defName>UWCEI_Modular_Caseless_SMG</defName>
+    <label>Novo-12</label>
+    <description>Designed by SN Tactical the Novo-12 features extensive polyplas construction. Incredibly lightweight, bulky and utilizes a complex gas-expulsion and counterweight system to offset its high recoil. A confusing design decision since it takes after many old-earth machine pistols known for their simple open-bolt configurations.</description>
+    <graphicData>
+      <texPath>Novo</texPath>
+      <graphicClass>ModularWeapons.Graphic_Modular</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Autopistol</soundInteract>
+    <recipeMaker>
+      <researchPrerequisite>BlowbackOperation</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>ShortShots</li>
+			<li>CE_SMG</li>
+			<li>CE_AI_BROOM</li>
+			<li>CE_OneHandedWeapon</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>RangedLight</li>
+      <li>ShortShots</li>
+    </weaponClasses>
+    <statBases>
+      <Mass>2.15</Mass>
+      <RangedWeapon_Cooldown>0.37</RangedWeapon_Cooldown>
+      <SightsEfficiency>0.7</SightsEfficiency>
+      <ShotSpread>0.16</ShotSpread>
+      <SwayFactor>1.84</SwayFactor>
+      <Bulk>2.69</Bulk>
+      <WorkToMake>33000</WorkToMake> <!-- x1.35 recoil reduction -->
+    </statBases>
+    <costList>
+      <Steel>25</Steel> <!-- ~25% plasteel -->
+      <Chemfuel>5</Chemfuel>
+      <Plasteel>5</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <recoilAmount>1.53</recoilAmount> <!-- x0.85 // Org. 1.80 -->
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_115x19mmC_FMJ</defaultProjectile>
+        <warmupTime>0.6</warmupTime>
+        <range>12</range>
+        <burstShotCount>6</burstShotCount>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+        <soundCast>Shot_MachinePistol</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="ModularWeapons.CompProperties_ModularParts">
+        <compClass>ModularWeapons.CompModularParts</compClass>
+        <partKinds>
+          <li>Novo_Mag</li>
+          <li>Novo_Frame</li>
+          <li>Novo_Stock</li>
+          <li>Novo_Fore</li>
+          <li>Novo_Muzzle</li>
+          <li>Novo_Optic</li>
+        </partKinds>
+        <majorKinds>
+          <li>Novo_Mag</li>
+          <li>Novo_Frame</li>
+        </majorKinds>
+        <defaultParts>
+          <li>Novo_Mag_Standard</li>
+          <li>Novo_Frame_Standard</li>
+          <li>Novo_Stock_Folded</li>
+        </defaultParts>
+      </li>
+      <li Class="ModularWeapons_CEModule.CompProperties_AmmoUserMW">
+        <magazineSize>25</magazineSize>
+        <reloadTime>4</reloadTime>
+        <ammoSet>AmmoSet_115x19mmC</ammoSet>
+      </li>
+      <li Class="ModularWeapons_CEModule.CompProperties_FireModesMW">
+        <aimedBurstShotCount>3</aimedBurstShotCount>
+        <aiUseBurstMode>FALSE</aiUseBurstMode>
+        <aiAimMode>Snapshot</aiAimMode>
+      </li>
+    </comps>
+    <tools>
+	  <li Class="CombatExtended.ToolCE">
+	  	<label>grip</label>
+	  	<capacities>
+	  		<li>Blunt</li>
+	  	</capacities>
+	  	<power>2</power>
+	  	<cooldownTime>1.54</cooldownTime>
+	  	<chanceFactor>1.5</chanceFactor>
+	  	<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+	  	<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+	  </li>
+	  <li Class="CombatExtended.ToolCE">
+	  	<label>muzzle</label>
+	  	<capacities>
+	  		<li>Poke</li>
+	  	</capacities>
+	  	<power>2</power>
+	  	<cooldownTime>1.54</cooldownTime>
+	  	<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+	  	<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+	  </li>
+    </tools>
+  </ThingDef>
+
+    <!-- =================================== Parts -->
+
+    <!-- ================ Magazine -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Mag_Standard</defName>
+      <label>Standard magazine</label>
+      <description>25-round magazine.</description>
+      <kind>Novo_Mag</kind>
+      <path>Mag_Std</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>2</Chemfuel>
+        <Steel>2</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Mag_Ext</defName>
+      <label>Extended magazine</label>
+      <description>50-round magazine.</description>
+      <kind>Novo_Mag</kind>
+      <path>Mag_Ext</path>
+      <!--=====-->
+      <massFactor>0.04</massFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>25</magazineSize>
+          <swayFactor>0.03</swayFactor>
+          <bulk>0.1</bulk>
+          <recoilAmount>-0.04</recoilAmount>
+          <reloadTime>0.45</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>4</Chemfuel>
+        <Steel>4</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Mag_Drum</defName>
+      <label>Drum magazine</label>
+      <description>80-round magazine.</description>
+      <kind>Novo_Mag</kind>
+      <path>Mag_Drum</path>
+      <!--=====-->
+      <massFactor>0.09</massFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>55</magazineSize>
+          <swayFactor>0.06</swayFactor>
+          <bulk>0.19</bulk>
+          <recoilAmount>-0.08</recoilAmount>
+          <reloadTime>0.9</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>8</Chemfuel>
+        <Steel>5</Steel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- ================ Frame -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Frame_Standard</defName>
+      <label>Standard frame</label>
+      <description>11.5mm polyplas frame with open bolt and recoil reduction mechanism.</description>
+      <kind>Novo_Frame</kind>
+      <path>Reciever_Std</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>3</Chemfuel>
+        <Plasteel>3</Plasteel>
+        <Steel>5</Steel>
+        <ComponentIndustrial>3</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef MayRequire="Bx395.UrbworldWeaponryCaseless">
+      <defName>Novo_Frame_57Defender</defName>
+      <label>5.7 Defender</label>
+      <description>5.7x26mmC polyplas frame with open bolt and recoil reduction mechanism.</description>
+      <kind>Novo_Frame</kind>
+      <path>Reciever_57</path>
+      <!--=====-->
+      <cooldownFactor>-0.01</cooldownFactor>
+      <massFactor>-0.18</massFactor>
+      <ticksBetweenShotsFactor>-2</ticksBetweenShotsFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <overrideAmmoSet>AmmoSet_57x26mm</overrideAmmoSet>
+          <swayFactor>-0.06</swayFactor>
+          <recoilAmount>-0.6</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>2</Chemfuel>
+        <Plasteel>2</Plasteel>
+        <Steel>4</Steel>
+        <ComponentIndustrial>3</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef MayRequire="Bx395.UrbworldWeaponryCaseless">
+      <defName>Novo_Frame_65</defName>
+      <label>6.5x18mmC</label>
+      <description>6.5x17mmC polyplas frame with open bolt and recoil reduction mechanism.</description>
+      <kind>Novo_Frame</kind>
+      <path>Reciever_65</path>
+      <!--=====-->
+      <cooldownFactor>-0.01</cooldownFactor>
+      <massFactor>-0.12</massFactor>
+      <ticksBetweenShotsFactor>-1</ticksBetweenShotsFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <overrideAmmoSet>AmmoSet_65x21mmCaseless</overrideAmmoSet>
+          <swayFactor>-0.04</swayFactor>
+          <recoilAmount>-0.4</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>2</Chemfuel>
+        <Plasteel>2</Plasteel>
+        <Steel>4</Steel>
+        <ComponentIndustrial>3</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- ================ Stock -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Stock_Folded</defName>
+      <label>Folded stock</label>
+      <description>Stock retracted for one-handed compact use.</description>
+      <kind>Novo_Stock</kind>
+      <path>Stock_Fold</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>1</Chemfuel>
+        <Steel>3</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Stock_Ext</defName>
+      <label>Extended stock</label>
+      <description>Stock extended for steadier, 2-handed use.</description>
+      <kind>Novo_Stock</kind>
+      <path>Stock_Ext</path>
+      <!--=====-->
+      <rangeFactor>4</rangeFactor>
+      <cooldownFactor>-0.01</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>-1.01</swayFactor>
+          <bulk>0.26</bulk>
+          <recoilAmount>-0.03</recoilAmount>
+          <sightsEfficiency>0.3</sightsEfficiency>
+          <oneHandedness>-1.0</oneHandedness>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>1</Chemfuel>
+        <Steel>3</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Stock_Full</defName>
+      <label>Full stock</label>
+      <description>Full poylmer stock.</description>
+      <kind>Novo_Stock</kind>
+      <path>Stock_Full</path>
+      <!--=====-->
+      <rangeFactor>4</rangeFactor>
+      <massFactor>0.68</massFactor>
+      <cooldownFactor>-0.01</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.08</swayFactor>
+          <bulk>2.64</bulk>
+          <recoilAmount>-0.21</recoilAmount>
+          <sightsEfficiency>0.3</sightsEfficiency>
+          <oneHandedness>-1.0</oneHandedness>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>3</Chemfuel>
+        <Steel>3</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- ================ Fore -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Fore_Loop</defName>
+      <label>Fiber loop</label>
+      <description>Fiber loop foregrip for 2-handed use.</description>
+      <kind>Novo_Fore</kind>
+      <path>Fore_Loop</path>
+      <!--=====-->
+      <massFactor>0.009</massFactor>
+      <cooldownFactor>-0.01</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>-0.15</swayFactor> <!-- -1.29 x0.2 -->
+          <recoilAmount>-0.08</recoilAmount>
+          <oneHandedness>-1.0</oneHandedness>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Cloth>2</Cloth>
+        <Steel>1</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Fore_Grip</defName>
+      <label>Foregrip</label>
+      <description>Polyplas foregrip, sturdy, light and helps with recoil control and sway.</description>
+      <kind>Novo_Fore</kind>
+      <path>Fore_Grip</path>
+      <!--=====-->
+      <massFactor>0.012</massFactor>
+      <cooldownFactor>-0.01</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>-0.25</swayFactor>
+          <bulk>0.14</bulk>
+          <recoilAmount>-0.15</recoilAmount>
+          <oneHandedness>-1.0</oneHandedness>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>2</Chemfuel>
+        <Plasteel>1</Plasteel>
+        <Steel>2</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Flashlight_Base">
+      <defName>Novo_Fore_Flashlight</defName>
+      <kind>Novo_Fore</kind>
+      <path>Fore_Flash</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>3</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+        <Steel>2</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Laser_Base">
+      <defName>Novo_Fore_Laser</defName>
+      <kind>Novo_Fore</kind>
+      <path>Fore_Laser</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>3</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+        <Steel>2</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Lightbox_Base">
+      <defName>Novo_Fore_Lightbox</defName>
+      <kind>Novo_Fore</kind>
+      <path>Fore_Light</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+        <Steel>4</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- ================ Muzzle -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Muzzle_Compensator</defName>
+      <label>Compensator</label>
+      <description>Muzzle device that directs propellant discharge reducing muzzle climb.</description>
+      <kind>Novo_Muzzle</kind>
+      <path>Muzzle_Comp</path>
+      <!--=====-->
+      <massFactor>0.11</massFactor>
+      <cooldownFactor>-0.02</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.05</swayFactor>
+          <bulk>0.09</bulk>
+          <recoilAmount>-0.2</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Plasteel>3</Plasteel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Muzzle_SuppressorL</defName>
+      <label>Light suppressor</label>
+      <description>Suppressor reducing weapon report and recoil.</description>
+      <kind>Novo_Muzzle</kind>
+      <path>Muzzle_SupS</path>
+      <!--=====-->
+      <IncomingDamageFactor>-0.08</IncomingDamageFactor>
+      <massFactor>0.25</massFactor>
+      <HuntingStealthFactor>0.45</HuntingStealthFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.6</swayFactor>
+          <bulk>1.43</bulk>
+          <recoilAmount>-0.08</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Steel>5</Steel>
+        <Chemfuel>5</Chemfuel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Muzzle_SuppressorH</defName>
+      <label>Heavy suppressor</label>
+      <description>Large muzzle suppressor reducing weapon report and recoil. Used as a foregrip.</description>
+      <kind>Novo_Muzzle</kind>
+      <path>Muzzle_SupB</path>
+      <!--=====-->
+      <IncomingDamageFactor>-0.14</IncomingDamageFactor>
+      <massFactor>0.54</massFactor>
+      <HuntingStealthFactor>0.8</HuntingStealthFactor>
+      <cooldownFactor>-0.01</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>1.1</swayFactor>
+          <bulk>2.76</bulk>
+          <recoilAmount>-0.15</recoilAmount>
+          <oneHandedness>-1.0</oneHandedness>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Steel>5</Steel>
+        <Chemfuel>5</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Muzzle_Enforcer</defName>
+      <label>Enforcer barrel</label>
+      <description>Large muzzle device used by enforcer police for longer-range gunfighting and nonlethal pacification.</description>
+      <kind>Novo_Muzzle</kind>
+      <path>Muzzle_Force</path>
+      <!--=====-->
+      <massFactor>0.95</massFactor>
+      <flashlightFactor>true</flashlightFactor>
+      <cooldownFactor>-0.01</cooldownFactor>
+      <warmupTimeFactor>-0.1</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <shotSpread>-0.04</shotSpread>
+          <swayFactor>1.29</swayFactor>
+          <bulk>2.91</bulk>
+          <recoilAmount>-0.24</recoilAmount>
+          <oneHandedness>-2.0</oneHandedness>
+          <sightsEfficiency>0.2</sightsEfficiency>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <researchPrerequisites>
+        <li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+      <costList>
+        <Steel>10</Steel>
+        <Chemfuel>10</Chemfuel>
+        <ComponentIndustrial>5</ComponentIndustrial>
+      </costList>
+      <incompatibleKind>
+        <li>Novo_Fore</li>
+      </incompatibleKind>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- ================ Optics -->
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Reddot_Base">
+      <defName>Novo_Optic_RedDot</defName>
+      <kind>Novo_Optic</kind>
+      <path>Optic_RedDot</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Steel>1</Steel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Holo_Base">
+      <defName>Novo_Optic_Holo</defName>
+      <kind>Novo_Optic</kind>
+      <path>Optic_Holo</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Plasteel>2</Plasteel>
+        <Chemfuel>5</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_ACOG_Base">
+      <defName>Novo_Optic_ACOG</defName>
+      <kind>Novo_Optic</kind>
+      <path>Optic_ACOG</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Plasteel>3</Plasteel>
+        <Chemfuel>5</Chemfuel>
+        <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>Novo_Optic_Scope</defName>
+      <label>PskN scope</label>
+      <description>Special night vision submachinegun scope used by special forces during old-Earth's 3rd World War.</description>
+      <kind>Novo_Optic</kind>
+      <path>Optic_Scope</path>
+      <!--=====-->
+      <massFactor>0.68</massFactor>
+      <warmupTimeFactor>0.5</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <sightsEfficiency>1.24</sightsEfficiency>
+          <bulk>0.2</bulk>
+          <swayFactor>0.15</swayFactor>
+        </li>
+      </additionalFactors>
+      <statModifiers>
+          <NightVisionEfficiency_Weapon>0.25</NightVisionEfficiency_Weapon>
+      </statModifiers>
+      <!--=====-->
+      <costList>
+        <Plasteel>3</Plasteel>
+        <Steel>5</Steel>
+        <ComponentIndustrial>5</ComponentIndustrial>
+        <Uranium>1</Uranium>
+      </costList>
+      <researchPrerequisites>
+        <li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Smartdot_Base">
+      <defName>Novo_Optic_SmartDot</defName>
+      <kind>Novo_Optic</kind>
+      <path>Optic_SmartDot</path>
+      <!--=====-->
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Smartholo_Base">
+      <defName>Novo_Optic_SmartHolo</defName>
+      <kind>Novo_Optic</kind>
+      <path>Optic_SmartHolo</path>
+      <!--=====-->
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+
+</Defs>

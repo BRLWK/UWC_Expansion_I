@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Basics - No research -->
+
+  <!-- Basic Pistol -->
+  <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>K10_Basic_Pistol</defName>
+    <customName>caseless combat pistol</customName>
+    <weapon>UWCEI_Modular_Caseless_Pistol</weapon>
+    <weaponTags>
+        <li>SimpleGun</li>
+    </weaponTags>
+    <requiredParts>
+      <li>K10_Frame_Standard</li>
+      <li>K10_Slide_Standard</li>
+      <li>K10_Magazine_Standard</li>
+    </requiredParts>
+    <optionalPartsCount>1</optionalPartsCount>
+    <optionalParts>
+      <li>K10_Fore_Flashlight</li>
+    </optionalParts>
+  </ModularWeapons.GunsmithPresetDef>
+
+  <!-- Combat Pistol CQB -->
+  <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>K10_CQB_Pistol</defName>
+    <customName>caseless combat pistol</customName>
+    <weapon>UWCEI_Modular_Caseless_Pistol</weapon>
+    <weaponTags>
+        <li>Gun</li>
+  	    <li>ShortShots</li>
+    </weaponTags>
+    <requiredParts>
+      <li>K10_Frame_Standard</li>
+      <li>K10_Slide_Standard</li>
+      <li>K10_Magazine_Standard</li>
+    </requiredParts>
+    <optionalPartsCount>5</optionalPartsCount>
+    <optionalParts>
+      <li>K10_Magazine_Extended</li>
+      <li>K10_Optic_Reddot</li>
+      <li>K10_Muzzle_Comp</li>
+      <li>K10_Muzzle_Suppressor</li>
+      <li>K10_Fore_Flashlight</li>
+      <li>K10_Fore_Laser</li>
+    </optionalParts>
+  </ModularWeapons.GunsmithPresetDef>
+
+  <!-- Combat Pistol Med -->
+  <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>K10_Skirmish_Pistol</defName>
+    <customName>caseless combat pistol</customName>
+    <weapon>UWCEI_Modular_Caseless_Pistol</weapon>
+    <weaponTags>
+        <li>Gun</li>
+  	    <li>Autopistol</li>
+    </weaponTags>
+    <requiredParts>
+      <li>K10_Frame_Standard</li>
+      <li>K10_Slide_Standard</li>
+      <li>K10_Magazine_Standard</li>
+    </requiredParts>
+    <optionalPartsCount>4</optionalPartsCount>
+    <optionalParts>
+      <li>K10_Magazine_Extended</li>
+      <li>K10_Optic_Scope</li>
+      <li>K10_Muzzle_Ext</li>
+      <li>K10_Fore_Flashlight</li>
+      <li>K10_Fore_Laser</li>
+    </optionalParts>
+  </ModularWeapons.GunsmithPresetDef>
+
+  <!-- Ind. research - Polyplas -->
+
+  <!-- Urbworld Pistol CQB -->
+  <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>K10_Urb_CQB_Pistol</defName>
+    <customName>urbworld combat pistol</customName>
+    <weapon>UWCEI_Modular_Caseless_Pistol</weapon>
+    <weaponTags>
+        <li>IndustrialGunAdvanced</li>
+    </weaponTags>
+    <requiredParts>
+      <li>K10_Slide_Plaspoly</li>
+      <li>K10_Frame_Plaspoly</li>
+      <li>K10_Magazine_Standard</li>
+    </requiredParts>
+    <optionalPartsCount>6</optionalPartsCount>
+    <optionalParts>
+      <li>K10_Magazine_Extended</li>
+      <li>K10_Optic_Reddot</li>
+      <li>K10_Muzzle_Comp</li>
+      <li>K10_Muzzle_Suppressor</li>
+      <li>K10_Fore_Flashlight</li>
+      <li>K10_Fore_Laser</li>
+      <li>K10_Fore_Lightbox</li>
+    </optionalParts>
+  </ModularWeapons.GunsmithPresetDef>
+
+  <!-- Combat Pistol Med -->
+  <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>K10_Urb_Skirmish_Pistol</defName>
+    <customName>urbworld combat pistol</customName>
+    <weapon>UWCEI_Modular_Caseless_Pistol</weapon>
+    <weaponTags>
+        <li>IndustrialGunAdvanced</li>
+  	    <li>Autopistol</li>
+    </weaponTags>
+    <requiredParts>
+      <li>K10_Slide_Plaspoly</li>
+      <li>K10_Frame_Plaspoly</li>
+      <li>K10_Magazine_Standard</li>
+    </requiredParts>
+    <optionalPartsCount>5</optionalPartsCount>
+    <optionalParts>
+      <li>K10_Magazine_Extended</li>
+      <li>K10_Optic_Scope</li>
+      <li>K10_Muzzle_Ext</li>
+      <li>K10_Fore_Flashlight</li>
+      <li>K10_Fore_Laser</li>
+      <li>K10_Fore_Rayfinder</li>
+    </optionalParts>
+  </ModularWeapons.GunsmithPresetDef>
+
+  <!-- Spacer. research - Charge -->
+
+  <!-- Glitter Pistol CQB -->
+  <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>K10_Glitter_CQB_Pistol</defName>
+    <customName>glittertech combat pistol</customName>
+    <weapon>UWCEI_Modular_Caseless_Pistol</weapon>
+    <weaponTags>
+        <li>SpacerGun</li>
+    </weaponTags>
+    <requiredParts>
+      <li>K10_Slide_Charge</li>
+      <li>K10_Frame_Charge</li>
+      <li>K10_Magazine_Charge</li>
+    </requiredParts>
+    <optionalPartsCount>3</optionalPartsCount>
+    <optionalParts>
+      <li>K10_Magazine_Charge_Ext</li>
+      <li>K10_Optic_Smartdot</li>
+      <li>K10_Muzzle_Charge_Comp</li>
+      <li>K10_Muzzle_Chg_Suppressor</li>
+    </optionalParts>
+  </ModularWeapons.GunsmithPresetDef>
+
+  <!-- Glitter Pistol Med -->
+  <ModularWeapons.GunsmithPresetDef MayRequire="kaitorisenkou.ModularWeapons">
+    <defName>K10_Glitter_Skirmish_Pistol</defName>
+    <customName>glittertech combat pistol</customName>
+    <weapon>UWCEI_Modular_Caseless_Pistol</weapon>
+    <weaponTags>
+        <li>SpacerGun</li>
+    </weaponTags>
+    <requiredParts>
+      <li>K10_Slide_Charge</li>
+      <li>K10_Frame_Charge</li>
+      <li>K10_Magazine_Charge</li>
+    </requiredParts>
+    <optionalPartsCount>2</optionalPartsCount>
+    <optionalParts>
+      <li>K10_Magazine_Charge_Ext</li>
+      <li>K10_Optic_SmartScope</li>
+      <li>K10_Muzzle_Chg_Ext</li>
+    </optionalParts>
+  </ModularWeapons.GunsmithPresetDef>
+
+</Defs>

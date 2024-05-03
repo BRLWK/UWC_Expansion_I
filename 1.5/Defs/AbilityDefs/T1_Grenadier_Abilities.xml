@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- Tier 1 -->
+
+    <!-- ========== Grenadier deck ========== -->
+
+  <AbilityDef>
+    <defName>UWC_ThermalSpotter_T1</defName>
+    <label>Thermal spotter (T1)</label>
+    <description>The grenadier using thermal optics to spot and call targets for nearby friendlies.</description>
+    <iconPath>UI/ThermalSpotter</iconPath>
+    <targetRequired>False</targetRequired>
+    <showOnCharacterCard>false</showOnCharacterCard>
+    <!--cooldownTicksRange>7200</cooldownTicksRange-->
+    <canUseAoeToGetTargets>false</canUseAoeToGetTargets>
+    <jobDef>CastAbilityOnThingWithoutWeaponInterruptible</jobDef>
+    <sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <showCastingProgressBar>true</showCastingProgressBar>
+    <stunTargetWhileCasting>true</stunTargetWhileCasting>
+    <groupAbility>true</groupAbility> 
+    <hostile>False</hostile>
+    <displayGizmoWhileUndrafted>False</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>True</disableGizmoWhileUndrafted>
+    <statBases>
+      <Ability_Duration>30</Ability_Duration>
+      <Ability_EffectRadius>9.9</Ability_EffectRadius>
+    </statBases>
+    <!--charges>1</charges>
+    <cooldownPerCharge>true</cooldownPerCharge-->
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <label>thermal spotter</label>
+      <warmupTime>3</warmupTime>
+      <range>9.9</range>
+      <drawAimPie>False</drawAimPie>      
+      <requireLineOfSight>false</requireLineOfSight>
+      <warmupEffecter>ThermalTarget_Warmup</warmupEffecter>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetHumans>false</canTargetHumans>
+        <canTargetMechs>false</canTargetMechs>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>Hdf_Base_ThermalSpotter_T1</hediffDef>
+        <onlyBrain>True</onlyBrain>
+        <onlyApplyToSelf>True</onlyApplyToSelf>
+        <replaceExisting>true</replaceExisting>
+        <canTargetBaby>False</canTargetBaby>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef>
+    <defName>UWC_HukerDown_T1</defName>
+    <label>hunker down! (T1)</label>
+    <description>Grenadier and nearby friendlies take as much cover as possible, slowing movement but increasing damage resistance.</description>
+    <iconPath>UI/Abilities/MechSmokepop</iconPath>
+    <cooldownTicksRange>7200</cooldownTicksRange>
+    <showPsycastEffects>false</showPsycastEffects>
+    <sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <label>hunker down!</label>
+      <drawAimPie>false</drawAimPie>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetable>false</targetable>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+      <!--soundCast>DeadlifeRelease</soundCast-->
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>Hdf_Base_HunkerDown_T1</hediffDef>
+        <onlyApplyToSelf>True</onlyApplyToSelf>
+        <replaceExisting>true</replaceExisting>
+      </li>
+      <!--li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li-->
+    </comps>
+  </AbilityDef>
+
+</Defs>

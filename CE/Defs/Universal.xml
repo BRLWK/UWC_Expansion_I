@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- Flashlight -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_Flashlight_Base" Abstract="True">
+      <label>Flashlight</label>
+      <description>Fore-mounted flashlight.</description>
+      <!--=====-->
+      <massFactor>0.032</massFactor>
+      <flashlightFactor>true</flashlightFactor>
+      <warmupTimeFactor>-0.03</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.03</swayFactor>
+          <bulk>0.08</bulk>
+          <recoilAmount>-0.02</recoilAmount>
+          <sightsEfficiency>0.05</sightsEfficiency>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+    <!-- Laser -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_Laser_Base" Abstract="True">
+      <label>Laser sight</label>
+      <description>Fore-mounted laser sight.</description>
+      <!--=====-->
+      <massFactor>0.032</massFactor>
+      <warmupTimeFactor>-0.07</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.015</swayFactor>
+          <bulk>0.05</bulk>
+          <recoilAmount>-0.01</recoilAmount>
+          <sightsEfficiency>0.15</sightsEfficiency>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+    <!-- lightbox -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_Lightbox_Base" Abstract="True">
+      <label>Lightbox</label>
+      <description>Fore-mounted tactical lightbox.</description>
+      <!--=====-->
+      <massFactor>0.048</massFactor>
+      <flashlightFactor>true</flashlightFactor>
+      <warmupTimeFactor>-0.1</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.019</swayFactor>
+          <bulk>0.11</bulk>
+          <recoilAmount>-0.03</recoilAmount>
+          <sightsEfficiency>0.2</sightsEfficiency>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <researchPrerequisites>
+        <li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- Red dot -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_Reddot_Base" Abstract="True">
+      <label>Red dot sight</label>
+      <description>Red dot sight allowing for increased accuracy.</description>
+      <!--=====-->
+      <massFactor>0.05</massFactor>
+      <warmupTimeFactor>0.05</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <sightsEfficiency>0.11</sightsEfficiency>
+          <bulk>0.04</bulk> 
+        </li>
+      </additionalFactors>
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+    <!-- Holo -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_Holo_Base" Abstract="True">
+      <label>Holographic sight</label>
+      <description>2x holographic sight.</description>
+      <!--=====-->
+      <massFactor>0.12</massFactor>
+      <warmupTimeFactor>0.15</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <sightsEfficiency>0.66</sightsEfficiency> <!-- 1.12 x0.2 -->
+          <bulk>0.08</bulk>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <researchPrerequisites>
+        <li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- ACOG -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_ACOG_Base" Abstract="True">
+      <label>ACOG scope</label>
+      <description>4x ACOG scope.</description>
+      <!--=====-->
+      <massFactor>0.32</massFactor>
+      <warmupTimeFactor>0.25</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <sightsEfficiency>1.24</sightsEfficiency>
+          <bulk>0.08</bulk>
+          <swayFactor>0.08</swayFactor>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+    <!-- Smart Dot -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_Smartdot_Base" Abstract="True">
+      <label>Smart dot</label>
+      <description>Special optic with aim assistance and night vision capability.</description>
+      <!--=====-->
+      <massFactor>0.08</massFactor>
+      <warmupTimeFactor>0.17</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <sightsEfficiency>0.5</sightsEfficiency>
+          <bulk>0.09</bulk>
+        </li>
+      </additionalFactors>
+      <statModifiers>
+          <AimingAccuracy>0.1</AimingAccuracy>
+          <ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+          <NightVisionEfficiency_Weapon>0.2</NightVisionEfficiency_Weapon>
+      </statModifiers>
+      <!--=====-->
+      <costList>
+        <Plasteel>5</Plasteel>
+        <ComponentIndustrial>5</ComponentIndustrial>
+      </costList>
+      <researchPrerequisites>
+        <li>Fabrication</li>
+      </researchPrerequisites>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- Smart Holo -->
+
+    <ModularWeapons.ModularPartDef Name="UWCEI_Smartholo_Base" Abstract="True">
+      <label>Smart holo</label>
+      <description>Special optic with aim assistance and night vision capability.</description>
+      <!--=====-->
+      <massFactor>0.17</massFactor>
+      <warmupTimeFactor>0.22</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <sightsEfficiency>1.1</sightsEfficiency>
+          <bulk>0.09</bulk>
+        </li>
+      </additionalFactors>
+      <statModifiers>
+          <AimingAccuracy>0.2</AimingAccuracy>
+          <ShootingAccuracyPawn>0.2</ShootingAccuracyPawn>
+          <NightVisionEfficiency_Weapon>0.4</NightVisionEfficiency_Weapon>
+      </statModifiers>
+      <!--=====-->
+      <costList>
+        <Plasteel>5</Plasteel>
+        <ComponentIndustrial>10</ComponentIndustrial>
+      </costList>
+      <researchPrerequisites>
+        <li>Fabrication</li>
+      </researchPrerequisites>
+    </ModularWeapons.ModularPartDef>
+
+
+</Defs>

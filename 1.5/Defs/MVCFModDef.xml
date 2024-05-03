@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <MVCF.ModDef>
+    	<defName>UWC_ExtensionI</defName>
+    	<label>Urbworld weaponry caseless: Extension I</label>
+    	<description>TODO</description>
+    	<ActivateFeatures>
+            <li>ExtraEquipmentVerbs</li>
+			<li>IntegratedToggle</li>
+			<li>HediffVerbs</li>
+    	</ActivateFeatures>
+    </MVCF.ModDef>
+
+</Defs>

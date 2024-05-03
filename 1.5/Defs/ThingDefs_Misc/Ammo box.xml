@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef>
+        <defName>Ammobox</defName>
+        <label>ammobox</label>
+        <graphicData>
+            <graphicClass>Graphic_Single</graphicClass>
+            <texPath>Buildings/AP_c</texPath>
+        </graphicData>
+        <selectable>false</selectable>
+        <tickerType>Normal</tickerType>
+        <thingClass>ThingWithComps</thingClass>
+        <useHitPoints>false</useHitPoints>
+        <rotatable>false</rotatable>
+        <comps>
+            <li Class="CompProperties_CauseHediff_AoE">
+              <range>1.9</range>
+              <ignoreMechs>true</ignoreMechs>
+              <drawLines>false</drawLines>
+              <hediff>MechBoost</hediff>
+            </li>
+            <li Class="CompProperties_DestroyAfterDelay">
+                <delayTicks>3500</delayTicks>
+                <displayCountdownOnLabel>true</displayCountdownOnLabel>
+            </li>
+            <li Class="CompProperties_Glower">
+              <glowRadius>3</glowRadius>
+              <glowColor>(106, 168, 79, 0)</glowColor>
+            </li>
+            <li Class="CompProperties_Effecter">
+              <effecterDef>MGP_Radius_Effecter</effecterDef>
+            </li>
+        </comps>
+    </ThingDef>
+
+</Defs>

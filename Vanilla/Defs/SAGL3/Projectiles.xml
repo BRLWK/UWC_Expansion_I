@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BaseGrenadeProjectile">
+    <defName>Bullet_AGL3_AB</defName>
+    <label>Airburst grenade</label>
+    <graphicData>
+      <texPath>Things/Projectile/Grenade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <explosionRadius>1.9</explosionRadius>
+      <armorPenetrationBase>0.015</armorPenetrationBase>
+      <speed>35</speed>
+      <arcHeightFactor>1.2</arcHeightFactor>
+      <shadowSize>0.6</shadowSize>
+      <screenShakeFactor>0.1</screenShakeFactor>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseGrenadeProjectile">
+      <defName>Bullet_Guided_HYAB</defName>
+      <label>High yield airburst grenade</label>
+      <graphicData>
+        <texPath>Things/Projectile/Grenade</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+      </graphicData>
+      <thingClass>Projectile_Explosive</thingClass>
+      <projectile>
+        <speed>35</speed>
+        <damageDef>Bomb</damageDef>
+        <!-- Use default damage from explosion def -->
+        <explosionRadius>1.9</explosionRadius>
+        <arcHeightFactor>0</arcHeightFactor>
+        <shadowSize>0.4</shadowSize>
+        <screenShakeFactor>0.1</screenShakeFactor>
+      </projectile>
+      <comps>
+  		<li Class="VFECore.CompProperties_HomingProjectile">
+  			<homingDistanceFractionPassed>0.25</homingDistanceFractionPassed>
+  			<homingCorrectionTickRate>2</homingCorrectionTickRate>
+  			<initialDispersionFromTarget>3</initialDispersionFromTarget>
+  			<!--hitSound>RM_Hit_Needler</hitSound-->
+  		</li>
+  	</comps>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- =================================== Weapon -->
+
+    <ThingDef ParentName="UWCEI_Base_Gun">
+    <defName>UWCEI_Modular_Caseless_Pistol</defName>
+    <label>SA K10</label>
+    <description>Special 11mm caseless combat pistol. Heavier and without automatic fire, the K10 differs from the K5 by its ability to fire charge ammunition. However, lacking Glittertech polish, the conversion kit is bulky and heavy. Special variants made for corporate security and military features complete plaspoly construction. The civilian model is made from standard steel.</description>
+    <graphicData>
+    	<texPath>k10</texPath>
+    	<graphicClass>ModularWeapons.Graphic_Modular</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_K10_Pistol</soundInteract>
+    <recipeMaker>
+    	<researchPrerequisite>Gunsmithing</researchPrerequisite>
+    	<skillRequirements>
+    		<Crafting>5</Crafting>
+    	</skillRequirements>
+    </recipeMaker>
+    <weaponTags>
+    	<li>ShortShots</li>
+    	<li>Autopistol</li>
+    	<li>CE_Sidearm</li>
+		  <li>CE_AI_BROOM</li>
+		  <li>CE_OneHandedWeapon</li>
+    </weaponTags>
+    <weaponClasses>
+    	<li>RangedLight</li>
+    	<li>ShortShots</li>
+    </weaponClasses>
+    <statBases>
+    	<Mass>0.93</Mass>
+    	<RangedWeapon_Cooldown>0.4</RangedWeapon_Cooldown>
+    	<SightsEfficiency>0.7</SightsEfficiency>
+    	<ShotSpread>0.17</ShotSpread>
+    	<SwayFactor>0.99</SwayFactor>
+    	<Bulk>2.05</Bulk>
+    	<WorkToMake>7500</WorkToMake>	
+    </statBases>
+    <costList>
+    	<Steel>20</Steel>
+		<Chemfuel>5</Chemfuel>
+    	<ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <verbs>
+    	<li Class="CombatExtended.VerbPropertiesCE">
+    		<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+    		<recoilAmount>3.11</recoilAmount>
+    		<hasStandardCommand>true</hasStandardCommand>
+    		<defaultProjectile>Bullet_115x19mmC_FMJ</defaultProjectile>
+    		<warmupTime>0.6</warmupTime>
+    		<range>12</range>
+    		<soundCast>Fire_K10_Pistol</soundCast>
+    		<soundCastTail>GunTail_Light</soundCastTail>
+    		<muzzleFlashScale>6</muzzleFlashScale>
+    	</li>
+    </verbs>
+    <comps>
+    	<li Class="ModularWeapons.CompProperties_ModularParts">
+    		<compClass>ModularWeapons.CompModularParts</compClass>
+    		<partKinds>
+    			<li>K10_Frame</li>
+    			<li>K10_Slide</li>
+    			<li>K10_Mag</li>
+    			<li>K10_Optic</li>
+    			<li>K10_Muzzle</li>
+    			<li>K10_Fore</li>
+    		</partKinds>
+    		<majorKinds>
+    			<li>K10_Frame</li>
+    			<li>K10_Slide</li>
+    			<li>K10_Mag</li>
+    		</majorKinds>
+    		<defaultParts>
+    			<li>K10_Frame_Standard</li>
+    			<li>K10_Slide_Standard</li>
+    			<li>K10_Magazine_Standard</li>
+    		</defaultParts>
+    	</li>
+    	<li Class="ModularWeapons_CEModule.CompProperties_AmmoUserMW">
+    		<magazineSize>14</magazineSize>
+    		<reloadTime>4</reloadTime>
+    		<ammoSet>AmmoSet_115x19mmC</ammoSet>
+    	</li>
+    	<li Class="ModularWeapons_CEModule.CompProperties_FireModesMW">
+    		<aiUseBurstMode>FALSE</aiUseBurstMode>
+    		<aiAimMode>Snapshot</aiAimMode>
+    	</li>
+    </comps>
+    <tools>
+		<li Class="CombatExtended.ToolCE">
+			<label>grip</label>
+			<capacities>
+				<li>Blunt</li>
+			</capacities>
+			<power>2</power>
+			<cooldownTime>1.54</cooldownTime>
+			<chanceFactor>1.5</chanceFactor>
+			<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+		</li>
+		<li Class="CombatExtended.ToolCE">
+			<label>muzzle</label>
+			<capacities>
+				<li>Poke</li>
+			</capacities>
+			<power>2</power>
+			<cooldownTime>1.54</cooldownTime>
+			<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+		</li>
+    </tools>
+  </ThingDef>
+
+    <!-- =================================== Parts -->
+
+    <!-- ================ Slide -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Slide_Standard</defName>
+      <label>Standard slide</label>
+      <description>Standard steel slide.</description>
+      <kind>K10_Slide</kind>
+      <path>Slide_Standard</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>2</Chemfuel>
+        <Steel>5</Steel>
+      </costList>
+      <incompatibleParts>
+        <!-- incomp ammo types -->
+        <li>K10_Magazine_Charge_10</li>
+        <li>K10_Magazine_Charge_10_Ext</li>
+        <li>K10_Magazine_Charge_6</li>
+        <li>K10_Magazine_Charge_6_Ext</li>
+        <li>K10_Magazine_Charge_5</li>
+        <li>K10_Magazine_Charge_5_Ext</li>
+        <!-- incomp Muzzle devices -->
+        <li>K10_Muzzle_Chg_Ext</li>
+        <li>K10_Muzzle_Charge_Comp</li>
+        <li>K10_Muzzle_Chg_Suppressor</li>
+      </incompatibleParts>
+    </ModularWeapons.ModularPartDef>
+
+	  <ModularWeapons.ModularPartDef>
+      <defName>K10_Slide_Plaspoly</defName>
+      <label>Plaspoly slide</label>
+      <description>Ultra-lightweight plaspoly slide with recoil reduction mechanism and match-grade barrel.</description>
+      <kind>K10_Slide</kind>
+      <path>Slide_Popl</path>
+      <!--=====-->
+	    <massFactor>-0.21</massFactor>
+	    <cooldownFactor>-0.01</cooldownFactor>
+	    <rangeFactor>2</rangeFactor>
+	    <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>-0.07</swayFactor>
+          <recoilAmount>-0.36</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+	  	<Steel>5</Steel>
+        <Chemfuel>10</Chemfuel>
+        <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+	  <researchPrerequisites>
+        <li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+      <incompatibleParts>
+        <li>K10_Frame_Charge</li>
+        <!-- incomp ammo types -->
+        <li>K10_Magazine_Charge_10</li>
+        <li>K10_Magazine_Charge_10_Ext</li>
+        <li>K10_Magazine_Charge_6</li>
+        <li>K10_Magazine_Charge_6_Ext</li>
+        <li>K10_Magazine_Charge_5</li>
+        <li>K10_Magazine_Charge_5_Ext</li>
+        <!-- incomp Muzzle devices -->
+        <li>K10_Muzzle_Chg_Ext</li>
+        <li>K10_Muzzle_Charge_Comp</li>
+        <li>K10_Muzzle_Chg_Suppressor</li>
+      </incompatibleParts>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Slide_Charge</defName>
+      <label>Charge slide</label>
+      <description>A crude conversion by glitterworld standards, most urbworld military reserve charge ammunition for seasoned troops and special forces.</description>
+      <kind>K10_Slide</kind>
+      <path>Slide_Charge</path>
+      <!--=====-->
+	    <massFactor>0.22</massFactor>
+	    <cooldownFactor>-0.01</cooldownFactor>
+	    <rangeFactor>4</rangeFactor>
+	    <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>-0.04</swayFactor>
+          <recoilAmount>-0.11</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>10</Chemfuel>
+        <Plasteel>10</Plasteel>
+		    <ComponentSpacer>1</ComponentSpacer>
+      </costList>
+	    <researchPrerequisites>
+        <li>Fabrication</li>
+      </researchPrerequisites>
+      <incompatibleParts>
+        <li>K10_Frame_Plaspoly</li>
+        <!-- incomp ammo types -->
+        <li>K10_Magazine_Standard</li>
+        <li>K10_Magazine_Extended</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Standard_65</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Extended_65</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Standard_57</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Extended_57</li>
+        <!-- incomp Muzzle devices -->
+        <li>K10_Muzzle_Ext</li>
+        <li>K10_Muzzle_Comp</li>
+        <li>K10_Muzzle_Suppressor</li>
+      </incompatibleParts>
+      <incompatibleKind>
+        <li>K10_Fore</li>
+      </incompatibleKind>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- ================ Frame -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Frame_Standard</defName>
+      <label>Standard frame</label>
+      <description>Standard steel frame.</description>
+      <kind>K10_Frame</kind>
+      <path>Frame_Standard</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Steel>10</Steel>
+      </costList>
+      <incompatibleParts>
+        <li>K10_Slide_Plaspoly</li>
+        <!-- incomp ammo types -->
+        <li>K10_Magazine_Charge_10</li>
+        <li>K10_Magazine_Charge_10_Ext</li>
+        <li>K10_Magazine_Charge_6</li>
+        <li>K10_Magazine_Charge_6_Ext</li>
+        <li>K10_Magazine_Charge_5</li>
+        <li>K10_Magazine_Charge_5_Ext</li>
+      </incompatibleParts>
+    </ModularWeapons.ModularPartDef>
+
+	  <ModularWeapons.ModularPartDef>
+      <defName>K10_Frame_Plaspoly</defName>
+      <label>Plaspoly frame</label>
+      <description>Ultra-lightweight plaspoly frame.</description>
+      <kind>K10_Frame</kind>
+      <path>Frame_Popl</path>
+      <!--=====-->
+	    <massFactor>-0.21</massFactor>
+	    <cooldownFactor>-0.01</cooldownFactor>
+	    <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>-0.07</swayFactor>
+          <recoilAmount>-0.36</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+	  	<Steel>2</Steel>
+        <Chemfuel>5</Chemfuel>
+        <Plasteel>3</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+	    <researchPrerequisites>
+        <li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+      <incompatibleParts>
+        <li>K10_Slide_Standard</li>
+        <li>K10_Slide_Charge</li>
+      </incompatibleParts>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Frame_Charge</defName>
+      <label>Charge frame</label>
+      <description>Heavier charge frame.</description>
+      <kind>K10_Frame</kind>
+      <path>Frame_Charge</path>
+      <!--=====-->
+	    <massFactor>0.22</massFactor>
+      <rangeFactor>4</rangeFactor>
+	    <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>-0.04</swayFactor>
+          <recoilAmount>-0.11</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>10</Chemfuel>
+        <Plasteel>10</Plasteel>
+      </costList>
+	    <researchPrerequisites>
+        <li>Fabrication</li>
+      </researchPrerequisites>
+      <incompatibleParts>
+        <li>K10_Slide_Standard</li>
+        <li>K10_Slide_Plaspoly</li>
+        <!-- incomp ammo types -->
+        <li>K10_Magazine_Standard</li>
+        <li>K10_Magazine_Extended</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Standard_65</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Extended_65</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Standard_57</li>
+        <li MayRequire="Bx395.UrbworldWeaponryCaseless">K10_Magazine_Extended_57</li>
+      </incompatibleParts>
+      <incompatibleKind>
+        <li>K10_Fore</li>
+      </incompatibleKind>
+    </ModularWeapons.ModularPartDef>
+
+	<!-- ================ Mag -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Standard</defName>
+      <label>Standard magazine</label>
+      <description>Standard 14-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_18</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Steel>10</Steel>
+		<ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Extended</defName>
+      <label>Extended magazine</label>
+      <description>Extended 18-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_24</path>
+      <!--=====-->
+	  <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>4</magazineSize>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>8</Chemfuel>
+        <Steel>14</Steel>
+		<ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef MayRequire="Bx395.UrbworldWeaponryCaseless">
+      <defName>K10_Magazine_Standard_65</defName>
+      <label>Standard 6.5 magazine</label>
+      <description>Converts this pistol to 6.5x18mm caseless; 18-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_18</path>
+      <!--=====-->
+      <cooldownFactor>-0.01</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>4</magazineSize>
+          <overrideAmmoSet>AmmoSet_65x21mmCaseless</overrideAmmoSet>
+          <recoilAmount>-0.2</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Steel>10</Steel>
+		<ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef MayRequire="Bx395.UrbworldWeaponryCaseless">
+      <defName>K10_Magazine_Extended_65</defName>
+      <label>Extended 6.5 magazine</label>
+      <description>Converts this pistol to 6.5x18mm caseless; 24-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_24</path>
+      <!--=====-->
+      <cooldownFactor>-0.01</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>10</magazineSize>
+          <overrideAmmoSet>AmmoSet_65x21mmCaseless</overrideAmmoSet>
+          <recoilAmount>-0.2</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>8</Chemfuel>
+        <Steel>15</Steel>
+		<ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef MayRequire="Bx395.UrbworldWeaponryCaseless">
+      <defName>K10_Magazine_Standard_57</defName>
+      <label>Standard 5.7mm magazine</label>
+      <description>Converts this pistol to 5.7x25mm caseless; 21-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_18</path>
+      <!--=====-->
+      <cooldownFactor>-0.02</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>7</magazineSize>
+          <overrideAmmoSet>AmmoSet_57x26mm</overrideAmmoSet>
+          <recoilAmount>-0.4</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Steel>10</Steel>
+		<ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef MayRequire="Bx395.UrbworldWeaponryCaseless">
+      <defName>K10_Magazine_Extended_57</defName>
+      <label>Extended 5.7mm magazine</label>
+      <description>Converts this pistol to 5.7x25mm caseless; 30-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_24</path>
+      <!--=====-->
+      <cooldownFactor>-0.02</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>16</magazineSize>
+          <overrideAmmoSet>AmmoSet_57x26mm</overrideAmmoSet>
+          <recoilAmount>-0.4</recoilAmount>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Steel>10</Steel>
+		    <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Charge_10</defName>
+      <label>Standard 10mm charge magazine</label>
+      <description>Converts this pistol to 10x18mm charge; 14-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_Chg_18</path>
+      <!--=====-->
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <overrideAmmoSet>AmmoSet_10x18mmCharged</overrideAmmoSet>
+          <reloadTime>0.5</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Charge_10_Ext</defName>
+      <label>Extended 10mm charge magazine</label>
+      <description>Converts this pistol to 10x18mm charge; 18-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_Chg_24</path>
+      <!--=====-->
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>4</magazineSize>
+          <overrideAmmoSet>AmmoSet_10x18mmCharged</overrideAmmoSet>
+          <reloadTime>0.5</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Charge_6</defName>
+      <label>Standard 6mm charge magazine</label>
+      <description>Converts this pistol to 6x18mm charge; 18-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_Chg_18</path>
+      <!--=====-->
+      <cooldownFactor>-0.02</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>4</magazineSize>
+          <overrideAmmoSet>AmmoSet_6x24mmCharged</overrideAmmoSet>
+          <recoilAmount>-0.82</recoilAmount>
+          <reloadTime>0.5</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Charge_6_Ext</defName>
+      <label>Extended 6mm charge magazine</label>
+      <description>Converts this pistol to 6x18mm charge; 24-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_Chg_24</path>
+      <!--=====-->
+      <cooldownFactor>-0.02</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>10  </magazineSize>
+          <overrideAmmoSet>AmmoSet_6x24mmCharged</overrideAmmoSet>
+          <recoilAmount>-0.82</recoilAmount>
+          <reloadTime>0.5</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Charge_5</defName>
+      <label>Standard 5mm charge magazine</label>
+      <description>Converts this pistol to 5x16mm charge; 23-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_Chg_18</path>
+      <!--=====-->
+      <cooldownFactor>-0.04</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>9</magazineSize>
+          <overrideAmmoSet>AmmoSet_5x16mmCharged</overrideAmmoSet>
+          <recoilAmount>-2</recoilAmount>
+          <reloadTime>0.5</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Magazine_Charge_5_Ext</defName>
+      <label>Extended 5mm charge magazine</label>
+      <description>Converts this pistol to 5x16mm charge; 32-rn magazine.</description>
+      <kind>K10_Mag</kind>
+      <path>Mag_Chg_24</path>
+      <!--=====-->
+      <cooldownFactor>-0.04</cooldownFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <magazineSize>18</magazineSize>
+          <overrideAmmoSet>AmmoSet_5x16mmCharged</overrideAmmoSet>
+          <recoilAmount>-2</recoilAmount>
+          <reloadTime>0.5</reloadTime>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <Plasteel>5</Plasteel>
+		    <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<!-- ================ Optics -->
+
+	<ModularWeapons.ModularPartDef ParentName="UWCEI_Reddot_Base">
+      <defName>K10_Optic_RedDot</defName>
+      <kind>K10_Optic</kind>
+      <path>Optic_Reddot</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Steel>1</Steel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef ParentName="UWCEI_ACOG_Base">
+      <defName>K10_Optic_Scope</defName>
+      <kind>K10_Optic</kind>
+      <path>Optic_Scope</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Plasteel>3</Plasteel>
+        <Chemfuel>5</Chemfuel>
+        <ComponentIndustrial>2</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef ParentName="UWCEI_Smartdot_Base">
+      <defName>K10_Optic_SmartDot</defName>
+      <kind>K10_Optic</kind>
+      <path>Optic_Smartdot</path>
+      <!--=====-->
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef ParentName="UWCEI_Smartholo_Base">
+      <defName>K10_Optic_SmartScope</defName>
+      <kind>K10_Optic</kind>
+      <path>Optic_Smartscope</path>
+      <!--=====-->
+      <!--=====-->
+    </ModularWeapons.ModularPartDef>
+
+	<!-- ================ Muzzle -->
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Muzzle_Ext</defName>
+      <label>Ext barrel</label>
+      <description>Barrel extension.</description>
+      <kind>K10_Muzzle</kind>
+      <path>Muzzle_Ext</path>
+      <!--=====-->
+	  <massFactor>0.21</massFactor>
+	  <cooldownFactor>-0.01</cooldownFactor>
+	  <rangeFactor>2</rangeFactor>
+	  <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.11</swayFactor>
+          <recoilAmount>-0.22</recoilAmount>
+          <shotSpread>-0.02</shotSpread>
+          <bulk>0.11</bulk>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+	  	<Steel>8</Steel>
+        <Plasteel>2</Plasteel>
+		<ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Muzzle_Comp</defName>
+      <label>Compensator</label>
+      <description>Compensator for reduced muzzle rise.</description>
+      <kind>K10_Muzzle</kind>
+      <path>Muzzle_Comp</path>
+      <!--=====-->
+	  <massFactor>0.11</massFactor>
+	  <cooldownFactor>-0.02</cooldownFactor>
+	  <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.05</swayFactor>
+          <recoilAmount>-0.46</recoilAmount>
+          <shotSpread>0.01</shotSpread>
+          <bulk>0.06</bulk>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+	  	<Steel>4</Steel>
+        <Plasteel>1</Plasteel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Muzzle_Suppressor</defName>
+      <label>Suppressor</label>
+      <description>Reduces report and recoil.</description>
+      <kind>K10_Muzzle</kind>
+      <path>Muzzle_Suppressor</path>
+      <!--=====-->
+      <IncomingDamageFactor>-0.10</IncomingDamageFactor>
+	  <massFactor>0.25</massFactor>
+	  <cooldownFactor>-0.01</cooldownFactor>
+      <HuntingStealthFactor>0.45</HuntingStealthFactor>
+	  <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.4</swayFactor>
+          <recoilAmount>-0.11</recoilAmount>
+          <shotSpread>0.01</shotSpread>
+          <bulk>1.12</bulk>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+	  	<Steel>3</Steel>
+        <Chemfuel>10</Chemfuel>
+		<ComponentIndustrial>1</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <!-- Charge -->
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Muzzle_Chg_Ext</defName>
+      <label>Charge extended barrel</label>
+      <description>Extended charge coils, unmatched range and accuracy.</description>
+      <kind>K10_Muzzle</kind>
+      <path>Muzzle_Chg_Ext</path>
+      <!--=====-->
+	    <massFactor>0.19</massFactor>
+	    <cooldownFactor>-0.01</cooldownFactor>
+	    <rangeFactor>4</rangeFactor>
+	    <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.09</swayFactor>
+          <recoilAmount>-0.19</recoilAmount>
+          <shotSpread>-0.03</shotSpread>
+          <bulk>0.09</bulk>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+	  	  <Chemfuel>5</Chemfuel>
+        <Plasteel>3</Plasteel>
+		    <ComponentIndustrial>3</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Muzzle_Charge_Comp</defName>
+      <label>Charge compensator</label>
+      <description>Lighter plasteel compensator.</description>
+      <kind>K10_Muzzle</kind>
+      <path>Muzzle_Chg_Comp</path>
+      <!--=====-->
+	    <massFactor>0.08</massFactor>
+	    <cooldownFactor>-0.02</cooldownFactor>
+	    <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.025</swayFactor>
+          <recoilAmount>-0.50</recoilAmount>
+          <bulk>0.05</bulk>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+        <Plasteel>3</Plasteel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef>
+      <defName>K10_Muzzle_Chg_Suppressor</defName>
+      <label>Charge suppressor</label>
+      <description>Reduces report and recoil. Requires special engineering to not explode when manipulating charged energy.</description>
+      <kind>K10_Muzzle</kind>
+      <path>Muzzle_Chg_Suppressor</path>
+      <!--=====-->
+      <IncomingDamageFactor>-0.15</IncomingDamageFactor>
+	    <massFactor>0.3</massFactor>
+	    <cooldownFactor>-0.02</cooldownFactor>
+      <HuntingStealthFactor>0.90</HuntingStealthFactor>
+	    <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <swayFactor>0.5</swayFactor>
+          <recoilAmount>-0.13</recoilAmount>
+          <bulk>1.25</bulk>
+        </li>
+      </additionalFactors>
+      <!--=====-->
+      <costList>
+	  	  <Plasteel>5</Plasteel>
+        <Chemfuel>10</Chemfuel>
+		    <ComponentIndustrial>3</ComponentIndustrial>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<!-- ================ Fore -->
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Flashlight_Base">
+      <defName>K10_Fore_Flashlight</defName>
+      <kind>K10_Fore</kind>
+      <path>UB_Flash</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>3</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+        <Steel>2</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Laser_Base">
+      <defName>K10_Fore_Laser</defName>
+      <kind>K10_Fore</kind>
+      <path>UB_Laser</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>3</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+        <Steel>2</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+    <ModularWeapons.ModularPartDef ParentName="UWCEI_Lightbox_Base">
+      <defName>K10_Fore_Lightbox</defName>
+      <kind>K10_Fore</kind>
+      <path>UB_Lightbox</path>
+      <!--=====-->
+      <!--=====-->
+      <costList>
+        <Chemfuel>5</Chemfuel>
+        <ComponentIndustrial>1</ComponentIndustrial>
+        <Steel>4</Steel>
+      </costList>
+    </ModularWeapons.ModularPartDef>
+
+	<ModularWeapons.ModularPartDef>
+      <defName>K10_Fore_Rayfinder</defName>
+      <description>Aim assistance and targeting module.</description>
+      <label>Rayfinder</label>
+      <kind>K10_Fore</kind>
+      <path>UB_Rayfinder</path>
+      <!--=====-->
+      <massFactor>0.11</massFactor>
+      <warmupTimeFactor>0.05</warmupTimeFactor>
+      <additionalFactors>
+        <li Class="ModularWeapons_CEModule.MWP_CEStats">
+          <sightsEfficiency>0.22</sightsEfficiency>
+          <bulk>0.13</bulk>
+        </li>
+      </additionalFactors>
+      <statModifiers>
+          <AimingAccuracy>0.05</AimingAccuracy>
+          <ShootingAccuracyPawn>0.05</ShootingAccuracyPawn>
+      </statModifiers>
+      <!--=====-->
+      <costList>
+        <ComponentIndustrial>3</ComponentIndustrial>
+        <Steel>5</Steel>
+		<Plasteel>3</Plasteel>
+      </costList>
+	  <researchPrerequisites>
+        <li>Fabrication</li>
+      </researchPrerequisites>
+    </ModularWeapons.ModularPartDef>
+
+</Defs>
